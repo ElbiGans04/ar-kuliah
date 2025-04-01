@@ -1,61 +1,245 @@
 import {
+  Viro3DObject,
+  // Viro3DObject,
+  // ViroQuad,
+  // ViroSpotLight,
   ViroARScene,
   ViroARSceneNavigator,
+  ViroButton,
+  // ViroButton,
+  ViroNode,
+  ViroQuad,
+  ViroSpotLight,
   // ViroCamera,
-  ViroText,
-  ViroTrackingReason,
+  // ViroTrackingReason,
   ViroTrackingStateConstants,
-} from "@reactvision/react-viro";
-import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+} from '@reactvision/react-viro';
+import React, {useEffect, useState} from 'react';
+import {Button, StyleSheet, View} from 'react-native';
 
-const HelloWorldSceneAR = () => {
-  const [text, setText] = useState("Initializing AR...");
+function HelloWorldSceneAR(props: any) {
+  const {scale, rotateX} = props.sceneNavigator.viroAppProps;
+  // const scale = 0, rotateX = 0, rotateY = 0;
+  useEffect(() => {
+    console.log(`Rotate X Update : ${rotateX}`);
+  }, [rotateX]);
 
-  function onInitialized(state: any, reason: ViroTrackingReason) {
-    console.log("onInitialized", state, reason);
-    if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
-      setText("Hello World!");
-    } else if (state === ViroTrackingStateConstants.TRACKING_UNAVAILABLE) {
-      // Handle loss of tracking
+  // useEffect(() => {
+  //   console.log(`rotateX Update : ${rotateX}`);
+  // }, [rotateX]);
+  // const [text, setText] = useState('Initializing AR...');
+  const [state, setState] = useState({
+    hasARInitialized: false,
+    text: 'Initializing AR...',
+  });
+
+  // function onInitialized(state: any, reason: ViroTrackingReason) {
+  //   console.log('onInitialized', state, reason);
+  //   if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
+  //     setText('Hello World!');
+  //   } else if (state === ViroTrackingStateConstants.TRACKING_UNAVAILABLE) {
+  //     // Handle loss of tracking
+  //   }
+  // }
+
+  function onTrackingUpdated(stateParam: ViroTrackingStateConstants) {
+    // if the state changes to "TRACKING_NORMAL" for the first time, then
+    // that means the AR session has initialized!
+    if (
+      !state.hasARInitialized &&
+      stateParam == ViroTrackingStateConstants.TRACKING_NORMAL
+    ) {
+      setState({
+        hasARInitialized: true,
+        text: 'Hello World!',
+      });
     }
   }
 
   return (
-    <ViroARScene onTrackingUpdated={onInitialized}>
-      {/* <ViroCamera position={[-1, 0, 0]} active={true} /> */}
-      <ViroText
-        text={text}
-        scale={[0.5, 0.5, 0.5]}
-        position={[0, 0, -2]}
-        style={styles.helloWorldTextStyle}
-      />
+    <ViroARScene onTrackingUpdated={onTrackingUpdated}>
+      <ViroNode
+        position={[-0.5, -0.5, -0.5]}
+        //dragType="FixedToWorld"
+        onDrag={() => {}}>
+        <ViroSpotLight
+          innerAngle={5}
+          outerAngle={45}
+          direction={[0, -1, -0.2]}
+          position={[0, 3, 0]}
+          color="#ffffff"
+          castsShadow={true}
+          influenceBitMask={2}
+          shadowMapSize={2048}
+          shadowNearZ={2}
+          shadowFarZ={5}
+          shadowOpacity={0.7}
+        />
+
+        <ViroButton
+          source={require('./assets/mobil.jpg')}
+          position={[0.25, 0.6, 0]}
+          height={0.3}
+          width={0.3}
+          dragType="FixedToWorld"
+          style={{flex: 2}}
+          onClick={() => console.log('Hello World')}
+        />
+        <ViroButton
+          source={require('./assets/mobil.jpg')}
+          position={[-0.25, 0.6, 0]}
+          height={0.3}
+          width={0.3}
+          dragType="FixedToWorld"
+          style={{flex: 2}}
+        />
+
+        <Viro3DObject
+          source={require('./assets/ar/emoji_smile.vrx')}
+          rotation={[45, 90, 0]}
+          scale={[scale || 0, scale || 0, scale || 0]}
+          type="VRX"
+          lightReceivingBitMask={3}
+          shadowCastingBitMask={2}
+          transformBehaviors={['billboard']}
+          resources={[
+            require('./assets/ar/emoji_smile_diffuse.png'),
+            require('./assets/ar/emoji_smile_specular.png'),
+            require('./assets/ar/emoji_smile_normal.png'),
+          ]}
+        />
+
+        <ViroQuad
+          rotation={[-90, 0, 0]}
+          width={0.5}
+          height={0.5}
+          arShadowReceiver={true}
+          lightReceivingBitMask={2}
+        />
+      </ViroNode>
     </ViroARScene>
   );
-};
+}
 
 export default () => {
+  const [scale, setScale] = useState(0.2);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+
   return (
-    <ViroARSceneNavigator
-      autofocus={true}
-      initialScene={{
-        scene: HelloWorldSceneAR,
-      }}
-      style={styles.f1}
-    />
+    <View style={styles.container}>
+      <ViroARSceneNavigator
+        autofocus={true}
+        viroAppProps={{
+          scale,
+          rotateX,
+          rotateY,
+        }}
+        initialScene={{
+          scene: HelloWorldSceneAR as any,
+        }}
+        style={styles.f1}
+      />
+      <View style={styles.containerAction}>
+        <View style={styles.containerActionHead}>
+          <Button
+            onPress={() => {
+              console.log('Down');
+              setScale(state => state - 0.1);
+            }}
+            title="Scale Down"
+          />
+          <Button
+            onPress={() => {
+              setScale(0.2);
+              setRotateX(0);
+              setRotateY(0);
+            }}
+            title="Reset Position"
+          />
+          <Button
+            onPress={() => {
+              console.log('Up');
+              setScale(state => state + 0.1);
+            }}
+            title="Scale Up"
+          />
+        </View>
+        <View style={styles.containerActionHead}>
+          <Button
+            onPress={() => {
+              setRotateX(state => state + 10);
+            }}
+            title="Right"
+          />
+          <Button
+            onPress={() => {
+              setRotateX(state => state - 10);
+            }}
+            title="Left"
+          />
+          <Button
+            onPress={() => {
+              setRotateY(state => state - 10);
+            }}
+            title="Down"
+          />
+          <Button
+            onPress={() => {
+              setRotateY(state => state + 10);
+            }}
+            title="Up"
+          />
+        </View>
+      </View>
+    </View>
   );
 };
 
 var styles = StyleSheet.create({
-  f1: { flex: 1 },
+  container: {
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+  },
+  containerAction: {
+    width: '100%',
+    flex: 1,
+    position: 'absolute',
+    // backgroundColor: 'red',
+    bottom: 0,
+    padding: 20,
+    gap: 24,
+  },
+  containerActionHead: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  containerActionBody: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+  action: {
+    width: 'auto',
+    padding: 10,
+  },
+  f1: {flex: 2},
   helloWorldTextStyle: {
-    fontFamily: "Arial",
+    fontFamily: 'Arial',
     fontSize: 30,
-    color: "#ffffff",
-    textAlignVertical: "center",
-    textAlign: "center",
+    color: '#ffffff',
+    textAlignVertical: 'center',
+    textAlign: 'center',
   },
 });
+
+/* 
+
+  Template Original React Native 0.76
+
+*/
 // /**
 //  * Sample React Native App
 //  * https://github.com/facebook/react-native
