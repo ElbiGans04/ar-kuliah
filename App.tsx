@@ -1,53 +1,27 @@
 import {
   Viro3DObject,
-  // Viro3DObject,
-  // ViroQuad,
-  // ViroSpotLight,
   ViroARScene,
   ViroARSceneNavigator,
-  ViroButton,
-  // ViroButton,
   ViroNode,
   ViroQuad,
   ViroSpotLight,
-  // ViroCamera,
-  // ViroTrackingReason,
   ViroTrackingStateConstants,
 } from '@reactvision/react-viro';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 
 function HelloWorldSceneAR(props: any) {
-  const {scale, rotateX} = props.sceneNavigator.viroAppProps;
-  // const scale = 0, rotateX = 0, rotateY = 0;
-  useEffect(() => {
-    console.log(`Rotate X Update : ${rotateX}`);
-  }, [rotateX]);
+  const {scale, rotateX, rotateY} = props.sceneNavigator.viroAppProps;
 
-  // useEffect(() => {
-  //   console.log(`rotateX Update : ${rotateX}`);
-  // }, [rotateX]);
-  // const [text, setText] = useState('Initializing AR...');
   const [state, setState] = useState({
     hasARInitialized: false,
     text: 'Initializing AR...',
   });
 
-  // function onInitialized(state: any, reason: ViroTrackingReason) {
-  //   console.log('onInitialized', state, reason);
-  //   if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
-  //     setText('Hello World!');
-  //   } else if (state === ViroTrackingStateConstants.TRACKING_UNAVAILABLE) {
-  //     // Handle loss of tracking
-  //   }
-  // }
-
   function onTrackingUpdated(stateParam: ViroTrackingStateConstants) {
-    // if the state changes to "TRACKING_NORMAL" for the first time, then
-    // that means the AR session has initialized!
     if (
       !state.hasARInitialized &&
-      stateParam == ViroTrackingStateConstants.TRACKING_NORMAL
+      stateParam === ViroTrackingStateConstants.TRACKING_NORMAL
     ) {
       setState({
         hasARInitialized: true,
@@ -58,10 +32,7 @@ function HelloWorldSceneAR(props: any) {
 
   return (
     <ViroARScene onTrackingUpdated={onTrackingUpdated}>
-      <ViroNode
-        position={[-0.5, -0.5, -0.5]}
-        //dragType="FixedToWorld"
-        onDrag={() => {}}>
+      <ViroNode position={[-0.5, -0.5, -0.5]} onDrag={() => {}}>
         <ViroSpotLight
           innerAngle={5}
           outerAngle={45}
@@ -75,33 +46,30 @@ function HelloWorldSceneAR(props: any) {
           shadowFarZ={5}
           shadowOpacity={0.7}
         />
-
-        <ViroButton
+        {/* Button Over 3DObject */}
+        {/* <ViroButton
           source={require('./assets/mobil.jpg')}
           position={[0.25, 0.6, 0]}
           height={0.3}
           width={0.3}
-          dragType="FixedToWorld"
           style={{flex: 2}}
-          onClick={() => console.log('Hello World')}
+          onClick={() => console.log('Hello World' + Date.now())}
         />
         <ViroButton
           source={require('./assets/mobil.jpg')}
           position={[-0.25, 0.6, 0]}
           height={0.3}
           width={0.3}
-          dragType="FixedToWorld"
           style={{flex: 2}}
-        />
+        /> */}
 
         <Viro3DObject
           source={require('./assets/ar/emoji_smile.vrx')}
-          rotation={[45, 90, 0]}
+          rotation={[rotateY || 0, rotateX || 0, 0]}
           scale={[scale || 0, scale || 0, scale || 0]}
           type="VRX"
           lightReceivingBitMask={3}
           shadowCastingBitMask={2}
-          transformBehaviors={['billboard']}
           resources={[
             require('./assets/ar/emoji_smile_diffuse.png'),
             require('./assets/ar/emoji_smile_specular.png'),
@@ -144,7 +112,6 @@ export default () => {
         <View style={styles.containerActionHead}>
           <Button
             onPress={() => {
-              console.log('Down');
               setScale(state => state - 0.1);
             }}
             title="Scale Down"
@@ -159,7 +126,6 @@ export default () => {
           />
           <Button
             onPress={() => {
-              console.log('Up');
               setScale(state => state + 0.1);
             }}
             title="Scale Up"
@@ -168,25 +134,25 @@ export default () => {
         <View style={styles.containerActionHead}>
           <Button
             onPress={() => {
-              setRotateX(state => state + 10);
+              setRotateX(state => state - 10);
             }}
             title="Right"
           />
           <Button
             onPress={() => {
-              setRotateX(state => state - 10);
+              setRotateX(state => state + 10);
             }}
             title="Left"
           />
           <Button
             onPress={() => {
-              setRotateY(state => state - 10);
+              setRotateY(state => state + 10);
             }}
             title="Down"
           />
           <Button
             onPress={() => {
-              setRotateY(state => state + 10);
+              setRotateY(state => state - 10);
             }}
             title="Up"
           />
@@ -235,7 +201,7 @@ var styles = StyleSheet.create({
   },
 });
 
-/* 
+/*
 
   Template Original React Native 0.76
 
