@@ -1,23 +1,25 @@
-import About from "../views/about";
-import Ar from "../views/Ar";
-import Home from "../views/home";
+import About from '../views/about';
+import Ar from '../views/Ar';
+import Home from '../views/home';
 
 const routes = [
     {
-        name: "Home",
+        name: 'Home',
         component: Home,
-        options: {}
+        options: {
+            headerShown: false,
+        },
     },
     {
-        name: "About",
+        name: 'About',
         component: About,
-        options: {}
+        options: {},
     },
     {
-        name: "Ar",
+        name: 'Ar',
         component: Ar,
-        options: {}
-    }
+        options: {},
+    },
 ];
 
 
