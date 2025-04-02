@@ -1,10 +1,13 @@
 import {
   Viro3DObject,
+  ViroAmbientLight,
   ViroARScene,
   ViroARSceneNavigator,
   ViroNode,
   ViroQuad,
   ViroSpotLight,
+  // ViroQuad,
+  // ViroSpotLight,
   ViroTrackingStateConstants,
 } from '@reactvision/react-viro';
 import React, {useState} from 'react';
@@ -33,19 +36,21 @@ function HelloWorldSceneAR(props: any) {
   return (
     <ViroARScene onTrackingUpdated={onTrackingUpdated}>
       <ViroNode position={[-0.5, -0.5, -0.5]} onDrag={() => {}}>
+        {/* AmbientLight agar object menjadi terang */}
+        <ViroAmbientLight color="#FFFFFF" />
         <ViroSpotLight
           innerAngle={5}
-          outerAngle={45}
+          outerAngle={25}
           direction={[0, -1, -0.2]}
-          position={[0, 3, 0]}
+          position={[0, 3, 1]}
           color="#ffffff"
           castsShadow={true}
-          influenceBitMask={2}
           shadowMapSize={2048}
           shadowNearZ={2}
           shadowFarZ={5}
           shadowOpacity={0.7}
         />
+
         {/* Button Over 3DObject */}
         {/* <ViroButton
           source={require('./assets/mobil.jpg')}
@@ -64,16 +69,31 @@ function HelloWorldSceneAR(props: any) {
         /> */}
 
         <Viro3DObject
-          source={require('./assets/ar/emoji_smile.vrx')}
-          rotation={[rotateY || 0, rotateX || 0, 0]}
+          position={[5, 0, 0]}
+          // transformBehaviors={['billboardX']}
+          source={require('./assets/ar/cat/12221_Cat_v1_l3.obj')}
+          rotation={[rotateX || 0, rotateY || 0, 0]}
           scale={[scale || 0, scale || 0, scale || 0]}
-          type="VRX"
+          type="OBJ"
           lightReceivingBitMask={3}
           shadowCastingBitMask={2}
           resources={[
-            require('./assets/ar/emoji_smile_diffuse.png'),
-            require('./assets/ar/emoji_smile_specular.png'),
-            require('./assets/ar/emoji_smile_normal.png'),
+            require('./assets/ar/cat/12221_Cat_v1_l3.mtl'),
+            require('./assets/ar/cat/Cat_bump.jpg'),
+          ]}
+        />
+
+        <Viro3DObject
+          // transformBehaviors={['billboardX']}
+          source={require('./assets/ar/dear/12961_White-Tailed_Deer_v1_l2.obj')}
+          rotation={[rotateX || 0, rotateY || 0, 0]}
+          scale={[scale || 0, scale || 0, scale || 0]}
+          type="OBJ"
+          lightReceivingBitMask={3}
+          shadowCastingBitMask={2}
+          resources={[
+            require('./assets/ar/dear/12961_White-Tailed_Deer_v1_l2.mtl'),
+            require('./assets/ar/dear/12961_White-TailedDeer_diffuse.jpg'),
           ]}
         />
 
@@ -90,7 +110,7 @@ function HelloWorldSceneAR(props: any) {
 }
 
 export default () => {
-  const [scale, setScale] = useState(0.2);
+  const [scale, setScale] = useState(0.1);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
 
