@@ -83,7 +83,7 @@ function Ar(props: any) {
           ]}
         />
 
-        <Viro3DObject
+        {/* <Viro3DObject
           // transformBehaviors={['billboardX']}
           source={require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2.obj')}
           rotation={[rotateX || 0, rotateY || 0, 0]}
@@ -95,7 +95,7 @@ function Ar(props: any) {
             require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2.mtl'),
             require('../assets/ar/dear/12961_White-TailedDeer_diffuse.jpg'),
           ]}
-        />
+        /> */}
 
         <ViroQuad
           rotation={[-90, 0, 0]}
