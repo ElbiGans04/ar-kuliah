@@ -1,5 +1,6 @@
 import About from '../views/about';
 import Ar from '../views/Ar';
+import Help from '../views/help';
 import Home from '../views/home';
 
 const routes = [
@@ -13,7 +14,16 @@ const routes = [
     {
         name: 'About',
         component: About,
-        options: {},
+        options: {
+            title: 'Tentang Aplikasi'
+        },
+    },
+    {
+        name: 'Help',
+        component: Help,
+        options: {
+            title: 'Panduan Aplikasi'
+        },
     },
     {
         name: 'Ar',

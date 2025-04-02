@@ -1,4 +1,4 @@
-// import {useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import React, {
   // Button,
   Image,
@@ -42,8 +42,7 @@ const styles = StyleSheet.create({
     rowGap: 25,
     columnGap: 15,
     justifyContent: 'center',
-    flexShrink: 1
-
+    flexShrink: 1,
   },
   button: {
     backgroundColor: 'white',
@@ -62,7 +61,7 @@ const styles = StyleSheet.create({
 });
 
 function Home() {
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
 
   return (
     <ScrollView style={styles.scrollViewContainer}>
@@ -86,13 +85,21 @@ function Home() {
               <Text style={styles.buttonText}>Quiz</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Help' as never);
+            }}
+            activeOpacity={0.7}>
             <View style={styles.button}>
               <Image source={require('../assets/icons/Index.png')} />
               <Text style={styles.buttonText}>Panduan</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('About' as never);
+            }}
+            activeOpacity={0.7}>
             <View style={styles.button}>
               <Image source={require('../assets/icons/Info.png')} />
               <Text style={styles.buttonText}>Tentang</Text>
