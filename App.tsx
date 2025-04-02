@@ -8,14 +8,19 @@ const Stack = createNativeStackNavigator();
 function MyApp() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        {
-          routes.map(value => {
-            return (
-              <Stack.Screen key={value.name} {...value}/>
-            )
-          })
-        }
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#513CCA',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'normal',
+          },
+        }}>
+        {routes.map(value => {
+          return <Stack.Screen key={value.name} {...value} />;
+        })}
       </Stack.Navigator>
     </NavigationContainer>
   );
