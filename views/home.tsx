@@ -69,17 +69,25 @@ function Home() {
         <LinearGradient colors={['#513CCA', '#281E64']}>
           <View style={styles.containerHead}>
             <Text style={styles.containerHeadTitle}>Judul Aplikasi</Text>
-            <Image source={require('../assets/icons/Picture.png')}></Image>
+            <Image source={require('../assets/icons/Picture.png')} />
           </View>
         </LinearGradient>
         <View style={styles.containerBody}>
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Materi' as never);
+            }}
+            activeOpacity={0.7}>
             <View style={styles.button}>
               <Image source={require('../assets/icons/Camera.png')} />
-              <Text style={styles.buttonText}>Camera</Text>
+              <Text style={styles.buttonText}>Materi</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Quiz' as never);
+            }}
+            activeOpacity={0.7}>
             <View style={styles.button}>
               <Image source={require('../assets/icons/Test.png')} />
               <Text style={styles.buttonText}>Quiz</Text>
