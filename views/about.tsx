@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   textBold: {
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 
 function About() {
