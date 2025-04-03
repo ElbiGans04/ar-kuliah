@@ -35,7 +35,7 @@ function Ar(props: any) {
 
   return (
     <ViroARScene onTrackingUpdated={onTrackingUpdated}>
-      <ViroNode position={[-0.5, -0.5, -0.5]} onDrag={() => {}}>
+      <ViroNode position={[0, 0, -3]} onDrag={() => {}}>
         {/* AmbientLight agar object menjadi terang */}
         <ViroAmbientLight color="#FFFFFF" />
         <ViroSpotLight
