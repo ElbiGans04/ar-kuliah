@@ -5,7 +5,9 @@ import {
   ViroARSceneNavigator,
   ViroNode,
   ViroQuad,
+  ViroSpinner,
   ViroSpotLight,
+  // ViroText,
   // ViroQuad,
   // ViroSpotLight,
   ViroTrackingStateConstants,
@@ -36,6 +38,10 @@ function Ar(props: any) {
   return (
     <ViroARScene onTrackingUpdated={onTrackingUpdated}>
       <ViroNode position={[0, 0, -3]} onDrag={() => {}}>
+        {/* Loading Text */}
+        {!state.hasARInitialized && (
+          <ViroSpinner type="light" position={[0, 0, -2]} />
+        )}
         {/* AmbientLight agar object menjadi terang */}
         <ViroAmbientLight color="#FFFFFF" />
         <ViroSpotLight
