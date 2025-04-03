@@ -1,3 +1,4 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {
   Viro3DObject,
   ViroAmbientLight,
@@ -15,9 +16,44 @@ import {
 import React, {useState} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 
-function Ar(props: any) {
-  const {scale, rotateX, rotateY} = props.sceneNavigator.viroAppProps;
+const materi = {
+  kucing: {
+    model: require('../assets/ar/cat/12221_Cat_v1_l3_obj.obj'),
+    assets: [
+      require('../assets/ar/cat/12221_Cat_v1_l3.mtl'),
+      require('../assets/ar/cat/Cat_bump.jpg'),
+    ],
+  },
+  rusa: {
+    model: require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2_obj.obj'),
+    assets: [
+      require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2.mtl'),
+      require('../assets/ar/dear/12961_White-TailedDeer_diffuse.jpg'),
+    ],
+  },
+  kuda: {
+    model: require('../assets/ar/horse/10026_Horse_v01-it2_obj.obj'),
+    assets: [
+      require('../assets/ar/horse/10026_Horse_v01-it2.mtl'),
+      require('../assets/ar/horse/Horse_v01.jpg'),
+    ],
+  },
+};
 
+type materiType = {
+  ar: {
+    type: 'rusa' | 'kucing' | 'kuda';
+  };
+};
+
+function Ar(props: any) {
+  const {scale, rotateX, rotateY, paramType} = props.sceneNavigator.viroAppProps as {
+    paramType: 'rusa' | 'kucing' | 'kuda'
+    scale: number,
+    rotateY: number,
+    rotateX: number,
+  };
+  const selectedMateri = materi[paramType]
   const [state, setState] = useState({
     hasARInitialized: false,
     text: 'Initializing AR...',
@@ -77,16 +113,13 @@ function Ar(props: any) {
         <Viro3DObject
           position={[5, 0, 0]}
           // transformBehaviors={['billboardX']}
-          source={require('../assets/ar/cat/12221_Cat_v1_l3_obj.obj')}
+          source={selectedMateri.model}
           rotation={[rotateX || 0, rotateY || 0, 0]}
           scale={[scale || 0, scale || 0, scale || 0]}
           type="OBJ"
           lightReceivingBitMask={3}
           shadowCastingBitMask={2}
-          resources={[
-            require('../assets/ar/cat/12221_Cat_v1_l3.mtl'),
-            require('../assets/ar/cat/Cat_bump.jpg'),
-          ]}
+          resources={selectedMateri.assets}
         />
 
         {/* <Viro3DObject
@@ -115,10 +148,13 @@ function Ar(props: any) {
   );
 }
 
-export default () => {
+export default function ArPage({
+  route,
+}: NativeStackScreenProps<materiType, 'ar'>) {
   const [scale, setScale] = useState(0.1);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
+  const paramType = route.params.type;
 
   return (
     <View style={styles.container}>
@@ -128,6 +164,7 @@ export default () => {
           scale,
           rotateX,
           rotateY,
+          paramType,
         }}
         initialScene={{
           scene: Ar as any,
@@ -186,7 +223,7 @@ export default () => {
       </View>
     </View>
   );
-};
+}
 
 var styles = StyleSheet.create({
   container: {

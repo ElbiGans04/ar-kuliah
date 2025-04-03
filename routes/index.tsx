@@ -3,6 +3,7 @@ import Ar from 'views/Ar';
 import Help from 'views/help';
 import Home from 'views/home';
 import Materi from 'views/Materi';
+import MateriDetail from 'views/materi/detail';
 import Quiz from 'views/quiz';
 
 const routes = [
@@ -39,6 +40,13 @@ const routes = [
     component: Materi,
     options: {
       title: 'Materi',
+    },
+  },
+  {
+    name: 'MateriDetail',
+    component: MateriDetail,
+    options: {
+      title: 'Pembahasan',
     },
   },
   {
