@@ -71,7 +71,7 @@ function Ar(props: any) {
         <Viro3DObject
           position={[5, 0, 0]}
           // transformBehaviors={['billboardX']}
-          source={require('../assets/ar/cat/12221_Cat_v1_l3.obj')}
+          source={require('../assets/ar/cat/12221_Cat_v1_l3_obj.obj')}
           rotation={[rotateX || 0, rotateY || 0, 0]}
           scale={[scale || 0, scale || 0, scale || 0]}
           type="OBJ"
@@ -85,7 +85,7 @@ function Ar(props: any) {
 
         {/* <Viro3DObject
           // transformBehaviors={['billboardX']}
-          source={require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2.obj')}
+          source={require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2_obj.obj')}
           rotation={[rotateX || 0, rotateY || 0, 0]}
           scale={[scale || 0, scale || 0, scale || 0]}
           type="OBJ"
