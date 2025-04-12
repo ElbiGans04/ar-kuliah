@@ -1,4 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React, {
   // Button,
   Image,
@@ -9,6 +10,7 @@ import React, {
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {ScreenType} from 'routes';
 
 const styles = StyleSheet.create({
   container: {height: '100%', flex: 1},
@@ -61,7 +63,8 @@ const styles = StyleSheet.create({
 });
 
 function Home() {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<ScreenType, 'Home'>>();
 
   return (
     <ScrollView style={styles.scrollViewContainer}>
@@ -75,7 +78,7 @@ function Home() {
         <View style={styles.containerBody}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Materi' as never);
+              navigation.navigate('Materi');
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
@@ -85,7 +88,7 @@ function Home() {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Quiz' as never);
+              navigation.navigate('Quiz');
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
@@ -95,7 +98,7 @@ function Home() {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Help' as never);
+              navigation.navigate('Help');
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
@@ -105,7 +108,7 @@ function Home() {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('About' as never);
+              navigation.navigate('About');
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
@@ -115,13 +118,13 @@ function Home() {
           </TouchableOpacity>
           {/* <Button
             onPress={() => {
-              navigation.navigate('About' as never);
+              navigation.navigate('About');
             }}
             title="Go To About"
           />
           <Button
             onPress={() => {
-              navigation.navigate('Ar' as never);
+              navigation.navigate('Ar');
             }}
             title="Go To Ar"
           /> */}

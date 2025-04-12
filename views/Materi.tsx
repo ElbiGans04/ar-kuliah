@@ -7,15 +7,7 @@ import React, {
   Text,
   View,
 } from 'react-native';
-
-type Materi = NativeStackNavigationProp<
-  {
-    MateriDetail: {
-      type: string;
-    };
-  },
-  'MateriDetail'
->;
+import {ScreenType} from 'routes';
 
 const styles = StyleSheet.create({
   scrollViewContainer: {},
@@ -41,7 +33,8 @@ const styles = StyleSheet.create({
 });
 
 function Materi() {
-  const navigation = useNavigation<Materi>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<ScreenType, 'Materi'>>();
 
   return (
     <ScrollView style={styles.scrollViewContainer}>

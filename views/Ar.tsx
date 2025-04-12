@@ -8,9 +8,6 @@ import {
   ViroQuad,
   ViroSpinner,
   ViroSpotLight,
-  // ViroText,
-  // ViroQuad,
-  // ViroSpotLight,
   ViroTrackingStateConstants,
 } from '@reactvision/react-viro';
 import React, {useState} from 'react';
@@ -40,20 +37,15 @@ const materi = {
   },
 };
 
-type materiType = {
-  ar: {
-    type: 'rusa' | 'kucing' | 'kuda';
-  };
-};
-
 function Ar(props: any) {
-  const {scale, rotateX, rotateY, paramType} = props.sceneNavigator.viroAppProps as {
-    paramType: 'rusa' | 'kucing' | 'kuda'
-    scale: number,
-    rotateY: number,
-    rotateX: number,
+  const {scale, rotateX, rotateY, paramType} = props.sceneNavigator
+    .viroAppProps as {
+    paramType: 'rusa' | 'kucing' | 'kuda';
+    scale: number;
+    rotateY: number;
+    rotateX: number;
   };
-  const selectedMateri = materi[paramType]
+  const selectedMateri = materi[paramType];
   const [state, setState] = useState({
     hasARInitialized: false,
     text: 'Initializing AR...',
@@ -150,7 +142,14 @@ function Ar(props: any) {
 
 export default function ArPage({
   route,
-}: NativeStackScreenProps<materiType, 'ar'>) {
+}: NativeStackScreenProps<
+  {
+    Ar: {
+      type: 'rusa' | 'kucing' | 'kuda';
+    };
+  },
+  'Ar'
+>) {
   const [scale, setScale] = useState(0.1);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);

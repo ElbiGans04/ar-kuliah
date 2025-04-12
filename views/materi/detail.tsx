@@ -1,17 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import { NativeStackNavigationProp } from 'node_modules/@react-navigation/native-stack/lib/typescript/commonjs/src';
-import React, {StyleSheet, Text, ScrollView, View, Button} from 'react-native';
-
-
-type Materi = NativeStackNavigationProp<
-  {
-    Ar: {
-      type: string;
-    };
-  },
-  'Ar'
->;
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
+import React, {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScreenType} from 'routes';
 
 const styles = StyleSheet.create({
   scrollViewContainer: {},
@@ -111,17 +104,12 @@ const materi = {
   ],
 };
 
-type materiType = {
-  MateriDetail: {
-    type: 'rusa' | 'kucing' | 'kuda';
-  };
-};
-
 function MateriDetail({
   route,
-}: NativeStackScreenProps<materiType, 'MateriDetail'>) {
+}: NativeStackScreenProps<ScreenType, 'MateriDetail'>) {
   const paramType = route.params.type;
-  const navigation = useNavigation<Materi>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<ScreenType, 'MateriDetail'>>();
   const selectedMateri = materi[paramType];
 
   return (
