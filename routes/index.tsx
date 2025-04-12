@@ -1,10 +1,10 @@
-import About from 'views/about';
-import Ar from 'views/ar';
-import Help from 'views/help';
-import Home from 'views/home';
-import Materi from 'views/materi';
-import MateriDetail from 'views/materi/detail';
-import Quiz from 'views/quiz';
+import AboutView from 'views/about';
+import ArView from 'views/ar';
+import HelpView from 'views/help';
+import HomeView from 'views/home';
+import MateriView from 'views/materi';
+import MateriDetailView from 'views/materi/detail';
+import QuizView from 'views/quiz';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
@@ -41,35 +41,35 @@ export default function Routes() {
         {/* Screen List */}
         <Stack.Screen
           name="Home"
-          component={Home}
+          component={HomeView}
           options={{headerShown: false}}
         />
         <Stack.Screen
           name="About"
-          component={About}
+          component={AboutView}
           options={{title: 'Tentang Aplikasi'}}
         />
         <Stack.Screen
           name="Help"
-          component={Help}
+          component={HelpView}
           options={{title: 'Panduan Aplikasi'}}
         />
         <Stack.Screen
           name="Quiz"
-          component={Quiz}
+          component={QuizView}
           options={{title: 'Quiz Aplikasi'}}
         />
         <Stack.Screen
           name="Materi"
-          component={Materi}
+          component={MateriView}
           options={{title: 'Pembahasan'}}
         />
         <Stack.Screen
           name="MateriDetail"
-          component={MateriDetail}
+          component={MateriDetailView}
           options={{title: 'Pembahasan'}}
         />
-        <Stack.Screen name="Ar" component={Ar} />
+        <Stack.Screen name="Ar" component={ArView} />
         {/* End Screen List */}
       </Stack.Navigator>
     </NavigationContainer>
