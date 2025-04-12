@@ -140,7 +140,7 @@ function Ar(props: any) {
   );
 }
 
-export default function ArPage({
+export default function ArView({
   route,
 }: NativeStackScreenProps<
   {

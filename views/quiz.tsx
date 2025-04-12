@@ -40,7 +40,7 @@ const answer = [
   },
 ];
 
-function Quiz() {
+export default function QuizView() {
   const [next, setNext] = useState(0);
 
   return (
@@ -50,10 +50,22 @@ function Quiz() {
           <>
             <Text style={styles.textHeader}>{answer[next].title}</Text>
             <View style={styles.containerText}>
-              <Button onPress={() => setNext(1)} title={answer[next].answer[0]} />
-              <Button onPress={() => setNext(1)} title={answer[next].answer[1]} />
-              <Button onPress={() => setNext(1)} title={answer[next].answer[2]} />
-              <Button onPress={() => setNext(1)} title={answer[next].answer[3]} />
+              <Button
+                onPress={() => setNext(1)}
+                title={answer[next].answer[0]}
+              />
+              <Button
+                onPress={() => setNext(1)}
+                title={answer[next].answer[1]}
+              />
+              <Button
+                onPress={() => setNext(1)}
+                title={answer[next].answer[2]}
+              />
+              <Button
+                onPress={() => setNext(1)}
+                title={answer[next].answer[3]}
+              />
             </View>
           </>
         )}
@@ -61,5 +73,3 @@ function Quiz() {
     </ScrollView>
   );
 }
-
-export default Quiz;

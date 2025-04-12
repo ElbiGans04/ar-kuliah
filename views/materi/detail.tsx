@@ -104,7 +104,7 @@ const materi = {
   ],
 };
 
-function MateriDetail({
+export default function MateriDetailView({
   route,
 }: NativeStackScreenProps<ScreenType, 'MateriDetail'>) {
   const paramType = route.params.type;
@@ -133,5 +133,3 @@ function MateriDetail({
     </ScrollView>
   );
 }
-
-export default MateriDetail;

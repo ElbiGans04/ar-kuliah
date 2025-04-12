@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function Help() {
+export default function HelpView () {
   return (
     <ScrollView style={styles.scrollViewContainer}>
       <View style={styles.container}>
@@ -45,5 +45,3 @@ function Help() {
     </ScrollView>
   );
 }
-
-export default Help;

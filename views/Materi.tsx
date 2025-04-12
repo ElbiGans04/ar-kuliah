@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function Materi() {
+export default function MateriView () {
   const navigation =
     useNavigation<NativeStackNavigationProp<ScreenType, 'Materi'>>();
 
@@ -80,5 +80,3 @@ function Materi() {
     </ScrollView>
   );
 }
-
-export default Materi;

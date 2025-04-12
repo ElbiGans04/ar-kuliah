@@ -1,7 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React, {
-  // Button,
   Image,
   ScrollView,
   StyleSheet,
@@ -62,7 +61,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function Home() {
+export default function HomeView () {
   const navigation =
     useNavigation<NativeStackNavigationProp<ScreenType, 'Home'>>();
 
@@ -133,5 +132,3 @@ function Home() {
     </ScrollView>
   );
 }
-
-export default Home;

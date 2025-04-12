@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function About() {
+export default function AboutView () {
   return (
     <ScrollView style={styles.scrollViewContainer}>
       <View style={styles.container}>
@@ -77,5 +77,3 @@ function About() {
     </ScrollView>
   );
 }
-
-export default About;
