@@ -1,3 +1,5 @@
+import { AppDetailContext } from '../hooks';
+import { useContext } from 'react';
 import React, {StyleSheet, Text, ScrollView, View} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -19,11 +21,13 @@ const styles = StyleSheet.create({
 });
 
 export default function AboutView () {
+  const appInfo = useContext(AppDetailContext);
+
   return (
     <ScrollView style={styles.scrollViewContainer}>
       <View style={styles.container}>
         <Text>
-          Selamat datang di aplikasi pembelajaran digital inovatif yang membawa
+          Selamat datang di {appInfo.appNameLong || '-'} yang membawa
           pengalaman belajar ke level baru!
         </Text>
         <Text>
@@ -67,7 +71,7 @@ export default function AboutView () {
             menyenangkan dan efektif.
           </Text>
         </View>
-        <Text style={styles.textBold}>🌟 Versi Saat Ini: 1.0</Text>
+        <Text style={styles.textBold}>🌟 Versi Saat Ini: {appInfo.appVersionNumber || '-'}</Text>
         <Text>
           Dengan Aplikasi ini, belajar menjadi lebih hidup, menyenangkan, dan
           mudah dipahami. Ayo mulai jelajahi dunia pengetahuan dengan teknologi

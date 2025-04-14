@@ -1,5 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { AppDetailContext } from '../hooks';
+import { useContext } from 'react';
 import React, {
   Image,
   ScrollView,
@@ -28,6 +30,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 18,
+    textAlign: 'center'
   },
   containerBody: {
     backgroundColor: '#D9D9D9',
@@ -62,6 +65,7 @@ const styles = StyleSheet.create({
 });
 
 export default function HomeView () {
+  const appInfo = useContext(AppDetailContext);
   const navigation =
     useNavigation<NativeStackNavigationProp<ScreenType, 'Home'>>();
 
@@ -70,7 +74,7 @@ export default function HomeView () {
       <View style={styles.container}>
         <LinearGradient colors={['#513CCA', '#281E64']}>
           <View style={styles.containerHead}>
-            <Text style={styles.containerHeadTitle}>Judul Aplikasi</Text>
+            <Text style={styles.containerHeadTitle}>{appInfo.appNameLong || 'App Name'}</Text>
             <Image source={require('../assets/icons/Picture.png')} />
           </View>
         </LinearGradient>
