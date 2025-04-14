@@ -1,4 +1,4 @@
-import { AppDetailContext } from '../hooks';
+import { AppDetailContext } from 'hooks/index';
 import { useContext } from 'react';
 import React, {StyleSheet, Text, ScrollView, View} from 'react-native';
 

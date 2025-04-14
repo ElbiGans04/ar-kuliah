@@ -5,6 +5,9 @@
     "paths": {
       // This needs to be mirrored in babel.config.js
       "assets": ["./assets"],
+      "constants": ["./constants"],
+      "hooks": ["./hooks"],
+      "routes": ["./routes"],
       "views": ["./views"],
     }
   },
