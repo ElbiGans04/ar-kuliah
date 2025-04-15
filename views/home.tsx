@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'white',
     fontWeight: 'bold',
-    marginLeft: 16
+    marginLeft: 16,
   },
   containerImageBackground: {
     position: 'relative',
