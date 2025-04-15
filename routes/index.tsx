@@ -10,18 +10,18 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 
 export type ScreenType = {
-  Home: undefined,
-  About: undefined,
-  Help: undefined,
-  Quiz: undefined,
-  Materi: undefined,
+  Home: undefined;
+  About: undefined;
+  Help: undefined;
+  Quiz: undefined;
+  Materi: undefined;
   MateriDetail: {
     type: 'rusa' | 'kucing' | 'kuda';
-  },
+  };
   Ar: {
     type: 'rusa' | 'kucing' | 'kuda';
-  }
-}
+  };
+};
 
 const Stack = createNativeStackNavigator<ScreenType>();
 
@@ -34,7 +34,6 @@ export default function Routes() {
           headerTintColor: '#0A3180',
           headerTitleStyle: {
             fontWeight: 'bold',
-            
           },
         }}>
         {/* Screen List */}
