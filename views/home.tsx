@@ -15,7 +15,13 @@ import {ScreenType} from 'routes';
 
 const styles = StyleSheet.create({
   container: {height: '100%', flex: 1},
-  scrollViewContainer: {height: '100%', flex: 1},
+  scrollViewContainer: {flex: 1},
+  containerImage: {
+    marginVertical: 20,
+    width: 156,
+    height: 156,
+    objectFit: 'contain',
+  },
   containerHead: {
     paddingTop: 50,
     paddingLeft: 10,
@@ -33,34 +39,53 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   containerBody: {
-    backgroundColor: '#D9D9D9',
+    backgroundColor: '#FFFFFF',
     marginTop: -40,
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
     paddingTop: 40,
     paddingBottom: 40,
     paddingHorizontal: 20,
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    rowGap: 25,
-    columnGap: 15,
-    justifyContent: 'center',
-    flexShrink: 1,
+    rowGap: 10,
+    width: 'auto',
   },
   button: {
-    backgroundColor: 'white',
+    backgroundColor: '#0A3180',
     padding: 20,
     flex: 1,
     borderRadius: 30,
-    justifyContent: 'center',
+    // justifyContent: 'space-around',
     alignItems: 'center',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    width: 'auto',
   },
   buttonText: {
-    fontSize: 16,
-    color: 'black',
+    fontSize: 20,
+    color: 'white',
     fontWeight: 'bold',
+    marginLeft: 16
+  },
+  containerImageBackground: {
+    position: 'relative',
+    width: 'auto',
+    height: 500,
+    // top: 0,
+    // left: 0,
+    // right: 0,
+    // bottom: 0,
+    // objectFit: 'fill'
+  },
+  containerHeadParent: {
+    position: 'relative',
+  },
+  imageBackgroundContainer: {
+    position: 'absolute',
+    width: 'auto',
+    height: 'auto',
+    top: 135,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
 
@@ -72,53 +97,90 @@ export default function HomeView() {
   return (
     <ScrollView style={styles.scrollViewContainer}>
       <View style={styles.container}>
-        <LinearGradient colors={['#513CCA', '#281E64']}>
+        <LinearGradient
+          style={styles.containerHeadParent}
+          colors={['#0A3180', '#0A3180']}>
+          <View style={styles.imageBackgroundContainer}>
+            <Image
+              style={styles.containerImageBackground}
+              source={require('assets/bg.png')}
+            />
+          </View>
           <View style={styles.containerHead}>
             <Text style={styles.containerHeadTitle}>
-              {appInfo.appNameLong || 'App Name'}
+              {appInfo.appNameLong.toUpperCase() || 'App Name'}
             </Text>
-            <Image source={require('../assets/icons/Picture.png')} />
+            <Image
+              style={styles.containerImage}
+              source={require('../assets/logo.png')}
+            />
           </View>
         </LinearGradient>
         <View style={styles.containerBody}>
+          {/* Mulai Ar */}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Materi');
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
-              <Image source={require('../assets/icons/Camera.png')} />
-              <Text style={styles.buttonText}>Materi</Text>
+              <Image source={require('../assets/icons/Camera-white.png')} />
+              <Text style={styles.buttonText}>MULAI AR</Text>
             </View>
           </TouchableOpacity>
+          {/* Materi */}
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Materi');
+            }}
+            activeOpacity={0.7}>
+            <View style={styles.button}>
+              <Image source={require('../assets/icons/Book.png')} />
+              <Text style={styles.buttonText}>MATERI</Text>
+            </View>
+          </TouchableOpacity>
+          {/* Quiz */}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Quiz');
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
-              <Image source={require('../assets/icons/Test.png')} />
-              <Text style={styles.buttonText}>Quiz</Text>
+              <Image source={require('../assets/icons/Test-white.png')} />
+              <Text style={styles.buttonText}>QUIZ</Text>
             </View>
           </TouchableOpacity>
+          {/* Panduan */}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Help');
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
-              <Image source={require('../assets/icons/Index.png')} />
-              <Text style={styles.buttonText}>Panduan</Text>
+              <Image source={require('../assets/icons/Index-white.png')} />
+              <Text style={styles.buttonText}>PANDUAN</Text>
             </View>
           </TouchableOpacity>
+          {/* Tentang Aplikasi */}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('About');
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
-              <Image source={require('../assets/icons/Info.png')} />
-              <Text style={styles.buttonText}>Tentang</Text>
+              <Image source={require('../assets/icons/Info-white.png')} />
+              <Text style={styles.buttonText}>TENTANG</Text>
+            </View>
+          </TouchableOpacity>
+          {/* Keluar Aplikasi */}
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('About');
+            }}
+            activeOpacity={0.7}>
+            <View style={styles.button}>
+              <Image source={require('../assets/icons/Logout.png')} />
+              <Text style={styles.buttonText}>KELUAR APLIKASI</Text>
             </View>
           </TouchableOpacity>
           {/* <Button
