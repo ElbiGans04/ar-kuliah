@@ -1,12 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
+import {Dispatch, SetStateAction, useMemo, useState} from 'react';
 import React, {
   Image,
   StyleSheet,
   Text,
   TextInput,
   TouchableHighlight,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {ScreenType} from 'routes';
@@ -14,21 +16,26 @@ import {ScreenType} from 'routes';
 const materi = [
   {
     key: 'kucing',
+    category: 'Hewan',
     textShow: 'Kucing',
     brief:
       'Kucing bisa tidur sampai 16 jam sehari. Wah, kamu bisa nggak ya kayak kucing?',
   },
   {
     key: 'kuda',
+    category: 'Hewan',
     textShow: 'Kuda',
     brief: 'Kuda bisa mengenali suara temannya dari jauh! Hebat, ya?',
   },
   {
     key: 'rusa',
+    category: 'Hewan',
     textShow: 'Rusa',
     brief: 'Rusa bisa menumbuhkan tanduk baru setiap tahun. Kok bisa, ya?',
   },
 ] as const;
+
+const tab = ['Hewan', 'Buah', 'Angka'] as const;
 
 const styles = StyleSheet.create({
   textHeader: {
@@ -86,6 +93,9 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderRadius: 10,
   },
+  tabItemTouchable: {
+    flexGrow: 1,
+  },
   tabItem: {
     flexGrow: 1,
     padding: 10,
@@ -128,46 +138,66 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 16,
   },
+  tabActive: {backgroundColor: '#0A3180'},
+  tabTextActive: {color: 'white'},
 });
 
 export default function MateriView() {
   const navigation =
     useNavigation<NativeStackNavigationProp<ScreenType, 'Materi'>>();
+  const [tabActive, setTabActive] = useState<
+    (typeof tab)[0] | (typeof tab)[1] | (typeof tab)[2]
+  >('Hewan');
+  const [finalSearch, setFinalSearch] = useState('');
+
+  const listValue = useMemo(() => {
+    return materi
+      .filter(val => val.category === tabActive)
+      .filter(val => {
+        // Kalau Text Input Belum Kembalikan true
+        if (!finalSearch) {
+          return true;
+        }
+        const found = val.textShow
+          .toLowerCase()
+          .search(finalSearch.toLowerCase());
+        return found !== -1;
+      });
+  }, [finalSearch, tabActive]);
 
   return (
     <BackgroundWithSectionLayout>
       <>
-        <View style={styles.containerTextInput}>
-          <TextInput
-            style={styles.textInputStyle}
-            placeholderTextColor="black"
-            placeholder="Cari Materi"
-          />
-          <TouchableHighlight
-            style={styles.touchableButtonStyle}
-            underlayColor={'transparent'}
-            activeOpacity={0.6}>
-            <View style={styles.textInputButton}>
-              <Text style={styles.textInputButtonText}>Cari</Text>
-            </View>
-          </TouchableHighlight>
-        </View>
-
+        <SearchBar setFinalSearch={setFinalSearch} />
         {/* Active Category */}
         <View style={styles.tabContainer}>
-          <View style={[styles.tabItem, {backgroundColor: '#0A3180'}]}>
-            <Text style={[styles.tabItemText, {color: 'white'}]}>Hewan</Text>
-          </View>
-          <View style={styles.tabItem}>
-            <Text style={styles.tabItemText}>Buah</Text>
-          </View>
-          <View style={styles.tabItem}>
-            <Text style={styles.tabItemText}>Angka</Text>
-          </View>
+          {tab.map(val => (
+            <TouchableOpacity
+              style={styles.tabItemTouchable}
+              onPress={() => setTabActive(val)}>
+              <View
+                key={val}
+                style={[
+                  styles.tabItem,
+                  val === tabActive ? styles.tabActive : {},
+                ]}>
+                <Text
+                  style={[
+                    styles.tabItemText,
+                    val === tabActive ? styles.tabTextActive : {},
+                  ]}>
+                  {val}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          ))}
         </View>
 
         <View style={styles.containerText}>
-          {materi.map(val => (
+          {listValue.length === 0 && (
+            <Text style={styles.textBold}>Maaf, Data tidak ditemukan</Text>
+          )}
+          {listValue.map(val => (
             <View key={val.key} style={styles.item}>
               <Image
                 style={styles.itemImage}
@@ -195,5 +225,34 @@ export default function MateriView() {
         </View>
       </>
     </BackgroundWithSectionLayout>
+  );
+}
+
+function SearchBar({
+  setFinalSearch,
+}: {
+  setFinalSearch: Dispatch<SetStateAction<string>>;
+}) {
+  const [search, setSearch] = useState('');
+
+  return (
+    <View style={styles.containerTextInput}>
+      <TextInput
+        style={styles.textInputStyle}
+        placeholderTextColor="black"
+        placeholder="Cari Materi"
+        value={search}
+        onChangeText={text => setSearch(text)}
+      />
+      <TouchableHighlight
+        onPress={() => setFinalSearch(search)}
+        style={styles.touchableButtonStyle}
+        underlayColor={'transparent'}
+        activeOpacity={0.6}>
+        <View style={styles.textInputButton}>
+          <Text style={styles.textInputButtonText}>Cari</Text>
+        </View>
+      </TouchableHighlight>
+    </View>
   );
 }
