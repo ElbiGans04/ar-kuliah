@@ -4,7 +4,13 @@ import {
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
-import React, {Button, StyleSheet, Text, View} from 'react-native';
+import React, {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
+} from 'react-native';
 import {ScreenType} from 'routes';
 
 const styles = StyleSheet.create({
@@ -22,6 +28,22 @@ const styles = StyleSheet.create({
     color: 'blue',
     textDecorationStyle: 'solid',
     textDecorationLine: 'underline',
+  },
+  image: {
+    width: 'auto',
+  },
+  touchableButtonStyle: {
+    overflow: 'hidden',
+  },
+  itemButton: {
+    backgroundColor: '#0A3180',
+    padding: 10,
+    borderRadius: 10,
+  },
+  itemButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 
@@ -111,6 +133,10 @@ export default function MateriDetailView({
   return (
     <BackgroundWithSectionLayout>
       <>
+        <Image
+          style={styles.image}
+          source={require('../../assets/mobil.jpg')}
+        />
         {selectedMateri &&
           selectedMateri.map((val, index) => {
             return (
@@ -121,10 +147,15 @@ export default function MateriDetailView({
             );
           })}
 
-        <Button
-          onPress={() => navigation.navigate('Ar', {type: paramType})}
-          title={'Lihat Model AR'}
-        />
+        <TouchableHighlight
+          style={styles.touchableButtonStyle}
+          underlayColor={'transparent'}
+          activeOpacity={0.6}
+          onPress={() => navigation.navigate('Ar', {type: paramType})}>
+          <View style={styles.itemButton}>
+            <Text style={styles.itemButtonText}>Lihat Model AR</Text>
+          </View>
+        </TouchableHighlight>
       </>
     </BackgroundWithSectionLayout>
   );
