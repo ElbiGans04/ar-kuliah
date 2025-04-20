@@ -50,22 +50,22 @@ export default function Routes() {
         <Stack.Screen
           name="Help"
           component={HelpView}
-          options={{title: 'Panduan Aplikasi'}}
+          options={{title: 'Panduan'}}
         />
         <Stack.Screen
           name="Quiz"
           component={QuizView}
-          options={{title: 'Quiz Aplikasi'}}
+          options={{title: 'Quiz'}}
         />
         <Stack.Screen
           name="Materi"
           component={MateriView}
-          options={{title: 'Pembahasan'}}
+          options={{title: 'Materi'}}
         />
         <Stack.Screen
           name="MateriDetail"
           component={MateriDetailView}
-          options={{title: 'Pembahasan'}}
+          options={{title: 'Materi'}}
         />
         <Stack.Screen name="Ar" component={ArView} />
         {/* End Screen List */}
