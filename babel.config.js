@@ -9,6 +9,7 @@ module.exports = {
           assets: './assets',
           constants: './constants',
           hooks: './hooks',
+          layouts: './layouts',
           routes: './routes',
           views: './views',
         },
