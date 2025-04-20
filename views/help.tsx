@@ -1,11 +1,7 @@
-import React, {StyleSheet, Text, ScrollView, View} from 'react-native';
+import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
+import React, {StyleSheet, Text, View} from 'react-native';
 
 const styles = StyleSheet.create({
-  scrollViewContainer: {},
-  container: {
-    padding: 10,
-    rowGap: 16,
-  },
   textHeader: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -18,10 +14,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function HelpView () {
+export default function HelpView() {
   return (
-    <ScrollView style={styles.scrollViewContainer}>
-      <View style={styles.container}>
+    <BackgroundWithSectionLayout>
+      <>
         <Text>
           Selamat datang ! Berikut adalah panduan untuk membantu Anda
           menggunakan aplikasi ini dengan mudah.
@@ -29,19 +25,12 @@ export default function HelpView () {
 
         <View style={styles.containerText}>
           <Text style={styles.textHeader}>Cara Melihat Materi </Text>
-          <Text>
-            📌 Buka Aplikasi ( Pastikan Di Menu Utama )
-          </Text>
-          <Text>
-                {'- On Proggres -'}
-          </Text>
+          <Text>📌 Buka Aplikasi ( Pastikan Di Menu Utama )</Text>
+          <Text>{'- On Proggres -'}</Text>
         </View>
 
         <Text>Jika mengalami kendala, silakan hubungi tim pengembang.</Text>
-
-        <Text style={styles.textBold}>🌟 Versi Saat Ini: 1.0</Text>
-        <Text>Dikembangkan oleh Rhafael Bijaksana & Muhammad Ikmal Akbar</Text>
-      </View>
-    </ScrollView>
+      </>
+    </BackgroundWithSectionLayout>
   );
 }

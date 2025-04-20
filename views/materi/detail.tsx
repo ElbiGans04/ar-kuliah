@@ -3,15 +3,11 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
-import React, {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
+import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
+import React, {Button, StyleSheet, Text, View} from 'react-native';
 import {ScreenType} from 'routes';
 
 const styles = StyleSheet.create({
-  scrollViewContainer: {},
-  container: {
-    padding: 10,
-    rowGap: 16,
-  },
   textHeader: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -113,8 +109,8 @@ export default function MateriDetailView({
   const selectedMateri = materi[paramType];
 
   return (
-    <ScrollView style={styles.scrollViewContainer}>
-      <View style={styles.container}>
+    <BackgroundWithSectionLayout>
+      <>
         {selectedMateri &&
           selectedMateri.map((val, index) => {
             return (
@@ -129,7 +125,7 @@ export default function MateriDetailView({
           onPress={() => navigation.navigate('Ar', {type: paramType})}
           title={'Lihat Model AR'}
         />
-      </View>
-    </ScrollView>
+      </>
+    </BackgroundWithSectionLayout>
   );
 }

@@ -1,20 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import React, {
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
+import React, {Pressable, StyleSheet, Text, View} from 'react-native';
 import {ScreenType} from 'routes';
 
 const styles = StyleSheet.create({
-  scrollViewContainer: {},
-  container: {
-    padding: 10,
-    rowGap: 16,
-  },
   textHeader: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -32,13 +22,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function MateriView () {
+export default function MateriView() {
   const navigation =
     useNavigation<NativeStackNavigationProp<ScreenType, 'Materi'>>();
 
   return (
-    <ScrollView style={styles.scrollViewContainer}>
-      <View style={styles.container}>
+    <BackgroundWithSectionLayout>
+      <>
         <View style={styles.containerText}>
           <Text style={styles.textHeader}>Daftar Isi</Text>
           <View style={styles.containerText}>
@@ -76,7 +66,7 @@ export default function MateriView () {
             </Pressable>
           </View>
         </View>
-      </View>
-    </ScrollView>
+      </>
+    </BackgroundWithSectionLayout>
   );
 }

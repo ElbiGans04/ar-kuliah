@@ -1,12 +1,8 @@
+import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
 import {useState} from 'react';
-import React, {StyleSheet, Text, ScrollView, View, Button} from 'react-native';
+import React, {Button, StyleSheet, Text, View} from 'react-native';
 
 const styles = StyleSheet.create({
-  scrollViewContainer: {},
-  container: {
-    padding: 10,
-    rowGap: 16,
-  },
   textHeader: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -44,8 +40,8 @@ export default function QuizView() {
   const [next, setNext] = useState(0);
 
   return (
-    <ScrollView style={styles.scrollViewContainer}>
-      <View style={styles.container}>
+    <BackgroundWithSectionLayout>
+      <>
         {next <= 1 && (
           <>
             <Text style={styles.textHeader}>{answer[next].title}</Text>
@@ -69,7 +65,7 @@ export default function QuizView() {
             </View>
           </>
         )}
-      </View>
-    </ScrollView>
+      </>
+    </BackgroundWithSectionLayout>
   );
 }
