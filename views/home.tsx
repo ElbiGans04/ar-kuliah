@@ -3,6 +3,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {AppDetailContext} from 'hooks/index';
 import {useContext} from 'react';
 import React, {
+  BackHandler,
   Image,
   ScrollView,
   StyleSheet,
@@ -175,7 +176,7 @@ export default function HomeView() {
           {/* Keluar Aplikasi */}
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('About');
+              BackHandler.exitApp();
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
