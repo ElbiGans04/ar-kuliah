@@ -1,41 +1,39 @@
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
-import {useState} from 'react';
-import {Button, StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const styles = StyleSheet.create({
+  containerText: {
+    gap: 24,
+  },
   textHeader: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#0A3180',
     textAlign: 'center',
   },
-  containerItem: {
-    marginTop: 16,
-    columnGap: 10,
-    rowGap: 24,
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  item: {
-    backgroundColor: '#CFCDCD',
-    borderRadius: 10,
-    padding: 10,
-    width: '45%',
-  },
-  itemImage: {
+  image: {
     width: 'auto',
-    height: 100,
+    height: 256,
   },
-  itemText: {
-    marginTop: 5,
+  containerHeader: {
+    gap: 24,
+  },
+  textInfo: {
+    fontWeight: 700,
+    color: '#0A3180',
+    textAlign: 'center',
+  },
+  button: {
+    backgroundColor: '#CFCDCD',
+    padding: 16,
+    borderRadius: 10,
+  },
+  buttonText: {
     textAlign: 'center',
     fontWeight: 'bold',
     color: '#0A3180',
   },
-  containerText: {},
 });
 
 const answer = [
@@ -65,25 +63,28 @@ export default function QuizDetailView() {
   return (
     <BackgroundWithSectionLayout>
       <>
+        <View style={styles.containerHeader}>
+          <Text style={styles.textInfo}>Pertanyaan {next + 1} dari 2</Text>
+          <Text style={styles.textHeader}>{answer[next].title}</Text>
+        </View>
+
+        <Image
+          style={styles.image}
+          source={require('../../assets/icons/Picture.png')}
+        />
+
         {next <= 1 && (
           <>
             <View style={styles.containerText}>
-              <Button
-                onPress={() => setNext(1)}
-                title={answer[next].answer[0]}
-              />
-              <Button
-                onPress={() => setNext(1)}
-                title={answer[next].answer[1]}
-              />
-              <Button
-                onPress={() => setNext(1)}
-                title={answer[next].answer[2]}
-              />
-              <Button
-                onPress={() => setNext(1)}
-                title={answer[next].answer[3]}
-              />
+              {answer[next].answer.map((val, index) => (
+                <TouchableOpacity
+                  key={`${val}-${index}`}
+                  onPress={() => setNext(1)}>
+                  <View style={styles.button}>
+                    <Text style={styles.buttonText}>{val}</Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
             </View>
           </>
         )}

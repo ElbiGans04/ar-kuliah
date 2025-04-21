@@ -1,3 +1,4 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
 import React, {
   Image,
@@ -6,6 +7,7 @@ import React, {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {ScreenType} from 'routes';
 
 const styles = StyleSheet.create({
   textHeader: {
@@ -41,13 +43,19 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function QuizView() {
+export default function QuizView({
+  navigation,
+}: NativeStackScreenProps<ScreenType, 'Quiz'>) {
   return (
     <BackgroundWithSectionLayout>
       <>
         <Text style={styles.textHeader}>PILIH KATEGORI QUIZ</Text>
         <View style={styles.containerItem}>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('QuizDetail');
+            }}
+            style={styles.item}>
             <View>
               <Image
                 style={styles.itemImage}
@@ -56,7 +64,11 @@ export default function QuizView() {
               <Text style={styles.itemText}>HEWAN</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('QuizDetail');
+            }}
+            style={styles.item}>
             <View>
               <Image
                 style={styles.itemImage}
@@ -65,7 +77,11 @@ export default function QuizView() {
               <Text style={styles.itemText}>HEWAN</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('QuizDetail');
+            }}
+            style={styles.item}>
             <View>
               <Image
                 style={styles.itemImage}
