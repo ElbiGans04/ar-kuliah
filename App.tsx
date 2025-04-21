@@ -1,9 +1,12 @@
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Routes from './routes';
 import React from 'react';
 
 function MyApp() {
   return (
-   <Routes />
+    <SafeAreaProvider>
+      <Routes />
+    </SafeAreaProvider>
   );
 }
 
