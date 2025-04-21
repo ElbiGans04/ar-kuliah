@@ -1,70 +1,80 @@
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
-import {useState} from 'react';
-import React, {Button, StyleSheet, Text, View} from 'react-native';
+import React, {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 const styles = StyleSheet.create({
   textHeader: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#0A3180',
+    textAlign: 'center',
   },
-  containerText: {
-    gap: 10,
+  containerItem: {
+    marginTop: 16,
+    columnGap: 10,
+    rowGap: 24,
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
-  textBold: {
+  item: {
+    backgroundColor: '#CFCDCD',
+    borderRadius: 10,
+    padding: 10,
+    width: '45%',
+  },
+  itemImage: {
+    width: 'auto',
+    height: 100,
+  },
+  itemText: {
+    marginTop: 5,
+    textAlign: 'center',
     fontWeight: 'bold',
+    color: '#0A3180',
   },
 });
 
-const answer = [
-  {
-    title: 'Apa saja ras kucing yang paling populer di dunia?',
-    answer: [
-      'Maine Coon, Siamese, Persian, Ragdoll',
-      'Bengal, Sphynx, British Shorthair, Scottish Fold',
-      'Abyssinian, Burmese, Munchkin, Exotic Shorthair',
-      'Siamese, Russian Blue, Manx, Turkish Van',
-    ],
-  },
-  {
-    title: 'Mengapa kucing sering menjilati tubuhnya sendiri?',
-    answer: [
-      'Untuk memberi tanda teritorial',
-      'Untuk menjaga kebersihan tubuhnya',
-      'Untuk menenangkan diri',
-      'Untuk mempercepat pertumbuhan bulu',
-    ],
-  },
-];
-
 export default function QuizView() {
-  const [next, setNext] = useState(0);
-
   return (
     <BackgroundWithSectionLayout>
       <>
-        {next <= 1 && (
-          <>
-            <Text style={styles.textHeader}>{answer[next].title}</Text>
-            <View style={styles.containerText}>
-              <Button
-                onPress={() => setNext(1)}
-                title={answer[next].answer[0]}
+        <Text style={styles.textHeader}>PILIH KATEGORI QUIZ</Text>
+        <View style={styles.containerItem}>
+          <TouchableOpacity style={styles.item}>
+            <View>
+              <Image
+                style={styles.itemImage}
+                source={require('../../assets/icons/Picture.png')}
               />
-              <Button
-                onPress={() => setNext(1)}
-                title={answer[next].answer[1]}
-              />
-              <Button
-                onPress={() => setNext(1)}
-                title={answer[next].answer[2]}
-              />
-              <Button
-                onPress={() => setNext(1)}
-                title={answer[next].answer[3]}
-              />
+              <Text style={styles.itemText}>HEWAN</Text>
             </View>
-          </>
-        )}
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
+            <View>
+              <Image
+                style={styles.itemImage}
+                source={require('../../assets/icons/Picture.png')}
+              />
+              <Text style={styles.itemText}>HEWAN</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
+            <View>
+              <Image
+                style={styles.itemImage}
+                source={require('../../assets/icons/Picture.png')}
+              />
+              <Text style={styles.itemText}>HEWAN</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </>
     </BackgroundWithSectionLayout>
   );

@@ -8,12 +8,14 @@ import QuizView from 'views/quiz/index';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
+import QuizDetailView from 'views/quiz/detail';
 
 export type ScreenType = {
   Home: undefined;
   About: undefined;
   Help: undefined;
   Quiz: undefined;
+  QuizDetail: undefined;
   Materi: undefined;
   MateriDetail: {
     type: 'rusa' | 'kucing' | 'kuda';
@@ -55,6 +57,11 @@ export default function Routes() {
         <Stack.Screen
           name="Quiz"
           component={QuizView}
+          options={{title: 'Quiz'}}
+        />
+        <Stack.Screen
+          name="QuizDetail"
+          component={QuizDetailView}
           options={{title: 'Quiz'}}
         />
         <Stack.Screen
