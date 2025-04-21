@@ -173,6 +173,7 @@ export default function MateriView() {
         <View style={styles.tabContainer}>
           {tab.map(val => (
             <TouchableOpacity
+              key={val}
               style={styles.tabItemTouchable}
               onPress={() => setTabActive(val)}>
               <View
