@@ -11,7 +11,6 @@ import React, {
   TouchableOpacity,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {ScreenType} from 'routes';
 
 const styles = StyleSheet.create({
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     width: 'auto',
     height: 500,
-    // top: 0,
+    top: 125,
     // left: 0,
     // right: 0,
     // bottom: 0,
@@ -83,7 +82,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 'auto',
     height: 'auto',
-    top: 135,
+    backgroundColor: '#0A3180',
+    top: 0,
     left: 0,
     right: 0,
     bottom: 0,
@@ -98,9 +98,7 @@ export default function HomeView() {
   return (
     <ScrollView style={styles.scrollViewContainer}>
       <View style={styles.container}>
-        <LinearGradient
-          style={styles.containerHeadParent}
-          colors={['#0A3180', '#0A3180']}>
+        <View style={styles.containerHeadParent}>
           <View style={styles.imageBackgroundContainer}>
             <Image
               style={styles.containerImageBackground}
@@ -116,7 +114,7 @@ export default function HomeView() {
               source={require('../assets/logo.png')}
             />
           </View>
-        </LinearGradient>
+        </View>
         <View style={styles.containerBody}>
           {/* Mulai Ar */}
           <TouchableOpacity
