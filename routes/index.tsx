@@ -4,7 +4,7 @@ import HelpView from 'views/help';
 import HomeView from 'views/home';
 import MateriView from 'views/materi';
 import MateriDetailView from 'views/materi/detail';
-import QuizView from 'views/quiz';
+import QuizView from 'views/quiz/index';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
