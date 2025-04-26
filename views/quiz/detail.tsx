@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
 
 const answer = [
   {
+    image: require('../../assets/quis/ras.jpg'),
     title: 'Apa saja ras kucing yang paling populer di dunia?',
     answer: [
       'Maine Coon, Siamese, Persian, Ragdoll',
@@ -99,6 +100,7 @@ const answer = [
     rightAnswer: 'Maine Coon, Siamese, Persian, Ragdoll',
   },
   {
+    image: require('../../assets/quis/kucing-mandi.jpg'),
     title: 'Mengapa kucing sering menjilati tubuhnya sendiri?',
     answer: [
       'Untuk memberi tanda teritorial',
@@ -239,8 +241,7 @@ export default function QuizDetailView({
               </Text>
               <Text>
                 Anda telah menyelesaikan quiz. Anda{' '}
-                {showModal2.value < 70 && 'Hanya'} mendapatkan
-                point{' '}
+                {showModal2.value < 70 && 'Hanya'} mendapatkan point{' '}
                 <Text style={styles.textBold}>
                   sebesar {showModal2.value}/100
                 </Text>
@@ -263,13 +264,9 @@ export default function QuizDetailView({
           </ReactNativeModal>
         </View>
 
-        <Image
-          style={styles.image}
-          source={require('../../assets/icons/Picture.png')}
-        />
-
         {next <= answer.length - 1 && (
           <>
+            <Image style={styles.image} source={questionsRandom[next].image} />
             <View style={styles.containerText}>
               {questionsRandom[next].answer.map((val, index) => (
                 <TouchableOpacity

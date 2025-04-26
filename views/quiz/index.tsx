@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   itemImage: {
     width: 'auto',
     height: 100,
+    objectFit: 'contain',
   },
   itemText: {
     marginTop: 5,
@@ -59,33 +60,7 @@ export default function QuizView({
             <View>
               <Image
                 style={styles.itemImage}
-                source={require('../../assets/icons/Picture.png')}
-              />
-              <Text style={styles.itemText}>HEWAN</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('QuizDetail');
-            }}
-            style={styles.item}>
-            <View>
-              <Image
-                style={styles.itemImage}
-                source={require('../../assets/icons/Picture.png')}
-              />
-              <Text style={styles.itemText}>HEWAN</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('QuizDetail');
-            }}
-            style={styles.item}>
-            <View>
-              <Image
-                style={styles.itemImage}
-                source={require('../../assets/icons/Picture.png')}
+                source={require('../../assets/quis/bg-icon-hewan.jpg')}
               />
               <Text style={styles.itemText}>HEWAN</Text>
             </View>
