@@ -124,7 +124,6 @@ export default function QuizDetailView({
       'beforeRemove',
       true
     > = event => {
-      console.log(`get called`);
       if (!allowBack) {
         event.preventDefault();
         setShowModal(true);
