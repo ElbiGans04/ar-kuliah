@@ -1,8 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
-import {
-  NativeStackNavigationProp,
-  NativeStackScreenProps,
-} from '@react-navigation/native-stack';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
 import React, {
   Image,
@@ -124,10 +120,9 @@ const materi = {
 
 export default function MateriDetailView({
   route,
+  navigation,
 }: NativeStackScreenProps<ScreenType, 'MateriDetail'>) {
   const paramType = route.params.type;
-  const navigation =
-    useNavigation<NativeStackNavigationProp<ScreenType, 'MateriDetail'>>();
   const selectedMateri = materi[paramType];
 
   return (

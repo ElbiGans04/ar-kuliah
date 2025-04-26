@@ -1,6 +1,5 @@
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {AppDetailContext} from 'hooks/index';
+import {NativeStackScreenProps} from 'node_modules/@react-navigation/native-stack/lib/typescript/commonjs/src';
 import {useContext} from 'react';
 import React, {
   BackHandler,
@@ -90,10 +89,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function HomeView() {
+export default function HomeView({
+  navigation,
+}: NativeStackScreenProps<ScreenType, 'Home'>) {
   const appInfo = useContext(AppDetailContext);
-  const navigation =
-    useNavigation<NativeStackNavigationProp<ScreenType, 'Home'>>();
 
   return (
     <ScrollView style={styles.scrollViewContainer}>

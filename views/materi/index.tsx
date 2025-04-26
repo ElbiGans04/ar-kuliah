@@ -1,6 +1,5 @@
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
+import {NativeStackScreenProps} from 'node_modules/@react-navigation/native-stack/lib/typescript/commonjs/src';
 import {Dispatch, SetStateAction, useMemo, useState} from 'react';
 import React, {
   Image,
@@ -142,9 +141,9 @@ const styles = StyleSheet.create({
   tabTextActive: {color: 'white'},
 });
 
-export default function MateriView() {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<ScreenType, 'Materi'>>();
+export default function MateriView({
+  navigation,
+}: NativeStackScreenProps<ScreenType, 'Materi'>) {
   const [tabActive, setTabActive] = useState<
     (typeof tab)[0] | (typeof tab)[1] | (typeof tab)[2]
   >('Hewan');
