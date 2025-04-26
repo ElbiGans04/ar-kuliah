@@ -17,6 +17,7 @@ const materi = [
     key: 'kucing',
     category: 'Hewan',
     textShow: 'Kucing',
+    image: require('../../assets/materi/amber-kipp-75715CVEJhI-unsplash.jpg'),
     brief:
       'Kucing bisa tidur sampai 16 jam sehari. Wah, kamu bisa nggak ya kayak kucing?',
   },
@@ -24,12 +25,14 @@ const materi = [
     key: 'kuda',
     category: 'Hewan',
     textShow: 'Kuda',
+    image: require('../../assets/materi/sinitta-leunen-nUl8Iz_EAkE-unsplash.jpg'),
     brief: 'Kuda bisa mengenali suara temannya dari jauh! Hebat, ya?',
   },
   {
     key: 'rusa',
     category: 'Hewan',
     textShow: 'Rusa',
+    image: require('../../assets/materi/didin-hasbullah-piNiZmg-wlc-unsplash.jpg'),
     brief: 'Rusa bisa menumbuhkan tanduk baru setiap tahun. Kok bisa, ya?',
   },
 ] as const;
@@ -199,10 +202,7 @@ export default function MateriView({
           )}
           {listValue.map(val => (
             <View key={val.key} style={styles.item}>
-              <Image
-                style={styles.itemImage}
-                source={require('../../assets/icons/Picture.png')}
-              />
+              <Image style={styles.itemImage} source={val.image} />
               <View style={styles.itemContainerText}>
                 <Text style={styles.itemHead}>{val.textShow}</Text>
                 <Text style={styles.itemText}>{val.brief}</Text>
