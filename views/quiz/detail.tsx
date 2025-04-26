@@ -6,7 +6,7 @@ import {
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
 import {NativeStackNavigationEventMap} from 'node_modules/@react-navigation/native-stack/lib/typescript/commonjs/src';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import ReactNativeModal from 'react-native-modal';
 import {ScreenType} from 'routes';
@@ -96,6 +96,7 @@ const answer = [
       'Abyssinian, Burmese, Munchkin, Exotic Shorthair',
       'Siamese, Russian Blue, Manx, Turkish Van',
     ],
+    rightAnswer: 'Maine Coon, Siamese, Persian, Ragdoll',
   },
   {
     title: 'Mengapa kucing sering menjilati tubuhnya sendiri?',
@@ -105,8 +106,19 @@ const answer = [
       'Untuk menenangkan diri',
       'Untuk mempercepat pertumbuhan bulu',
     ],
+    rightAnswer: 'Untuk menjaga kebersihan tubuhnya',
   },
 ];
+
+function RandomArray(source: any[]) {
+  const array = [...source];
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+
+  return array;
+}
 
 export default function QuizDetailView({
   navigation,
@@ -141,6 +153,16 @@ export default function QuizDetailView({
       navigation.goBack();
     }
   }, [allowBack, navigation]);
+
+  // Random Quistion
+  const questionsRandom = useMemo(() => {
+    const random = RandomArray(answer);
+    return random.map((val: (typeof answer)[0]) => {
+      const newVal = {...val};
+      newVal.answer = RandomArray(newVal.answer);
+      return newVal;
+    });
+  }, []);
 
   return (
     <BackgroundWithSectionLayout>
@@ -220,7 +242,7 @@ export default function QuizDetailView({
         {next <= 1 && (
           <>
             <View style={styles.containerText}>
-              {answer[next].answer.map((val, index) => (
+              {questionsRandom[next].answer.map((val, index) => (
                 <TouchableOpacity
                   key={`${val}-${index}`}
                   onPress={() => {
