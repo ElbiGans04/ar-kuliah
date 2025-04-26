@@ -125,10 +125,15 @@ export default function QuizDetailView({
 }: NativeStackScreenProps<ScreenType, 'MateriDetail'>) {
   const [next, setNext] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
+  const [showModal2, setShowModal2] = useState<{show: boolean; value: number}>({
+    show: false,
+    value: 0,
+  });
   const [allowBack, setAllowBack] = useState(false);
+  const [selected, setSelected] = useState<string[]>([]);
 
   // Register Event
+  // Prevent user to go back
   useEffect(() => {
     const handler: EventListenerCallback<
       NativeStackNavigationEventMap &
@@ -163,6 +168,24 @@ export default function QuizDetailView({
       return newVal;
     });
   }, []);
+
+  // Check Answer
+  useEffect(() => {
+    if (questionsRandom.length === selected.length) {
+      const rateRight = questionsRandom.reduce(
+        (prev, currentVal, currentIndex) => {
+          return (
+            prev + (currentVal.rightAnswer === selected[currentIndex] ? 1 : 0)
+          );
+        },
+        0,
+      );
+      setShowModal2({
+        show: true,
+        value: Math.round((rateRight / questionsRandom.length) * 100),
+      });
+    }
+  }, [selected, questionsRandom]);
 
   return (
     <BackgroundWithSectionLayout>
@@ -209,19 +232,25 @@ export default function QuizDetailView({
 
         {/* Modal 2 */}
         <View>
-          <ReactNativeModal isVisible={showModal2}>
+          <ReactNativeModal isVisible={showModal2.show}>
             <View style={styles.modalContainer}>
-              <Text style={styles.modalHeading}>Selamat</Text>
+              <Text style={styles.modalHeading}>
+                {showModal2.value < 70 ? 'Coba Lagi' : 'Selamat'}
+              </Text>
               <Text>
-                Anda telah menyelesaikan quiz. Anda mendapatkan point{' '}
-                <Text style={styles.textBold}>sebesar 100/100</Text>
+                Anda telah menyelesaikan quiz. Anda{' '}
+                {showModal2.value < 70 && 'Hanya'} mendapatkan
+                point{' '}
+                <Text style={styles.textBold}>
+                  sebesar {showModal2.value}/100
+                </Text>
               </Text>
 
               {/* Button Action */}
               <View style={styles.modalContainerAction}>
                 <TouchableOpacity
                   onPress={() => {
-                    setShowModal2(false);
+                    setShowModal2({show: false, value: 0});
                     setAllowBack(true);
                   }}
                   style={styles.item}>
@@ -239,19 +268,21 @@ export default function QuizDetailView({
           source={require('../../assets/icons/Picture.png')}
         />
 
-        {next <= 1 && (
+        {next <= answer.length - 1 && (
           <>
             <View style={styles.containerText}>
               {questionsRandom[next].answer.map((val, index) => (
                 <TouchableOpacity
                   key={`${val}-${index}`}
                   onPress={() => {
-                    if (next !== 1) {
-                      setNext(1);
-                      return;
-                    }
+                    setSelected(selectedValue => {
+                      return [...selectedValue, val];
+                    });
 
-                    setShowModal2(true);
+                    // Prevent ketika sudah tidak ada soal lagi
+                    if (next !== answer.length - 1) {
+                      setNext(nextIndex => nextIndex + 1);
+                    }
                   }}>
                   <View style={styles.button}>
                     <Text style={styles.buttonText}>{val}</Text>
