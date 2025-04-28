@@ -1,5 +1,5 @@
 import {AppDetailContext} from 'hooks/index';
-import BackgroundWithSectionLayout from '../layouts/backgroundWithSection';
+import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
 import {useContext} from 'react';
 import React, {StyleSheet, Text, View} from 'react-native';
 
