@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {StrictMode} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Routes from './routes';
 
 function MyApp() {
   return (
-    <SafeAreaProvider>
-      <Routes />
-    </SafeAreaProvider>
+    <StrictMode>
+      <SafeAreaProvider>
+        <Routes />
+      </SafeAreaProvider>
+    </StrictMode>
   );
 }
 
