@@ -124,7 +124,7 @@ function RandomArray(source: any[]) {
 
 export default function QuizDetailView({
   navigation,
-}: NativeStackScreenProps<ScreenType, 'MateriDetail'>) {
+}: NativeStackScreenProps<ScreenType, 'QuizDetail'>) {
   const [next, setNext] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState<{show: boolean; value: number}>({
