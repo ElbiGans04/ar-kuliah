@@ -1,5 +1,5 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
-import {NativeStackScreenProps} from 'node_modules/@react-navigation/native-stack/lib/typescript/commonjs/src';
 import {Dispatch, SetStateAction, useMemo, useState} from 'react';
 import React, {
   Image,
