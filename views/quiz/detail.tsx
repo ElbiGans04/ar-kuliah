@@ -3,9 +3,8 @@ import {
   EventMapCore,
   StackNavigationState,
 } from '@react-navigation/native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {NativeStackScreenProps, NativeStackNavigationEventMap} from '@react-navigation/native-stack';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
-import {NativeStackNavigationEventMap} from 'node_modules/@react-navigation/native-stack/lib/typescript/commonjs/src';
 import React, {useEffect, useMemo, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import ReactNativeModal from 'react-native-modal';

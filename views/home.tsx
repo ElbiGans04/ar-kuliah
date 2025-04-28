@@ -1,5 +1,5 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {AppDetailContext} from 'hooks/index';
-import {NativeStackScreenProps} from 'node_modules/@react-navigation/native-stack/lib/typescript/commonjs/src';
 import {useContext} from 'react';
 import React, {
   BackHandler,
