@@ -4,6 +4,7 @@ import {useContext} from 'react';
 import React, {
   BackHandler,
   Image,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -171,16 +172,19 @@ export default function HomeView({
             </View>
           </TouchableOpacity>
           {/* Keluar Aplikasi */}
-          <TouchableOpacity
-            onPress={() => {
-              BackHandler.exitApp();
-            }}
-            activeOpacity={0.7}>
-            <View style={styles.button}>
-              <Image source={require('../assets/icons/Logout.png')} />
-              <Text style={styles.buttonText}>KELUAR APLIKASI</Text>
-            </View>
-          </TouchableOpacity>
+          {/* Tombol Keluar khusus android */}
+          {Platform.OS === 'android' && (
+            <TouchableOpacity
+              onPress={() => {
+                BackHandler.exitApp();
+              }}
+              activeOpacity={0.7}>
+              <View style={styles.button}>
+                <Image source={require('../assets/icons/Logout.png')} />
+                <Text style={styles.buttonText}>KELUAR APLIKASI</Text>
+              </View>
+            </TouchableOpacity>
+          )}
           {/* <Button
             onPress={() => {
               navigation.navigate('About');
