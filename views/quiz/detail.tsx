@@ -3,11 +3,23 @@ import {
   EventMapCore,
   StackNavigationState,
 } from '@react-navigation/native';
-import {NativeStackScreenProps, NativeStackNavigationEventMap} from '@react-navigation/native-stack';
+import {
+  NativeStackScreenProps,
+  NativeStackNavigationEventMap,
+} from '@react-navigation/native-stack';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
 import React, {useEffect, useMemo, useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ActivityIndicator,
+  AppState,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import ReactNativeModal from 'react-native-modal';
+import SoundPlayer from 'react-native-sound-player';
 import {ScreenType} from 'routes';
 
 const styles = StyleSheet.create({
@@ -84,6 +96,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  modalContainer3: {
+    backgroundColor: 'white',
+    paddingHorizontal: 16,
+    paddingVertical: 32,
+    borderRadius: 10,
+    gap: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });
 
 const answer = [
@@ -132,6 +153,29 @@ export default function QuizDetailView({
   });
   const [allowBack, setAllowBack] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
+  const [appReady, setAppReady] = useState(false);
+
+  function PlayMusic() {
+    try {
+      setAppReady(false);
+      SoundPlayer.playAsset(require('../../assets/songs/backsong.mp3'));
+    } catch (err) {
+      console.log('Gagal memutar Backsound');
+    }
+  }
+
+  function StopMusic() {
+    try {
+      SoundPlayer.stop();
+    } catch (err) {
+      console.log('Failed To Stop Song');
+    }
+  }
+
+  // Play Background Music
+  useEffect(() => {
+    PlayMusic();
+  }, []);
 
   // Register Event
   // Prevent user to go back
@@ -156,6 +200,7 @@ export default function QuizDetailView({
 
   useEffect(() => {
     if (allowBack) {
+      StopMusic();
       navigation.goBack();
     }
   }, [allowBack, navigation]);
@@ -187,6 +232,37 @@ export default function QuizDetailView({
       });
     }
   }, [selected, questionsRandom]);
+
+  // Background
+  useEffect(() => {
+    const eventListener = AppState.addEventListener('change', event => {
+      if (event === 'active') {
+        PlayMusic();
+      } else {
+        StopMusic();
+      }
+    });
+
+    return () => {
+      eventListener.remove();
+    };
+  }, []);
+
+  // Repeat Song
+  useEffect(() => {
+    const listener = SoundPlayer.addEventListener('FinishedPlaying', () => {
+      PlayMusic();
+    });
+
+    const listener2 = SoundPlayer.addEventListener('FinishedLoading', () => {
+      setAppReady(true);
+    });
+
+    return () => {
+      listener.remove();
+      listener2.remove();
+    };
+  }, []);
 
   return (
     <BackgroundWithSectionLayout>
@@ -259,6 +335,16 @@ export default function QuizDetailView({
                   </View>
                 </TouchableOpacity>
               </View>
+            </View>
+          </ReactNativeModal>
+        </View>
+
+        {/* Modal 3 */}
+        <View>
+          <ReactNativeModal isVisible={!appReady}>
+            <View style={styles.modalContainer3}>
+              <ActivityIndicator size="large" color="#0A3180" />
+              <Text style={styles.modalHeading}>Memuat</Text>
             </View>
           </ReactNativeModal>
         </View>
