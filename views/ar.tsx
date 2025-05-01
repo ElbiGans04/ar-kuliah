@@ -12,6 +12,7 @@ import {
 } from '@reactvision/react-viro';
 import React, {useEffect, useState} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
+import { ScreenType } from 'routes';
 
 const materi = {
   kucing: {
@@ -169,11 +170,7 @@ function Ar(props: any) {
 export default function ArView({
   route,
 }: NativeStackScreenProps<
-  {
-    Ar: {
-      type: 'rusa' | 'kucing' | 'kuda';
-    };
-  },
+  ScreenType,
   'Ar'
 >) {
   const paramType = route.params.type;
