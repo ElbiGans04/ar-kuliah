@@ -10,7 +10,7 @@ import {
   ViroSpotLight,
   ViroTrackingStateConstants,
 } from '@reactvision/react-viro';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 
 const materi = {
@@ -20,6 +20,12 @@ const materi = {
       require('../assets/ar/cat/12221_Cat_v1_l3.mtl'),
       require('../assets/ar/cat/Cat_bump.jpg'),
     ],
+    initialValue: {
+      scale: 0.04,
+      rotateX: -90,
+      rotateY: 50,
+      position: [0, -2, 0],
+    },
   },
   rusa: {
     model: require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2_obj.obj'),
@@ -27,6 +33,12 @@ const materi = {
       require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2.mtl'),
       require('../assets/ar/dear/12961_White-TailedDeer_diffuse.jpg'),
     ],
+    initialValue: {
+      scale: 0.05,
+      rotateX: -90,
+      rotateY: -60,
+      position: [0, -2, 0],
+    },
   },
   kuda: {
     model: require('../assets/ar/horse/10026_Horse_v01-it2_obj.obj'),
@@ -34,6 +46,12 @@ const materi = {
       require('../assets/ar/horse/10026_Horse_v01-it2.mtl'),
       require('../assets/ar/horse/Horse_v01.jpg'),
     ],
+    initialValue: {
+      scale: 0.0015,
+      rotateX: -90,
+      rotateY: 50,
+      position: [0, -3, 0],
+    },
   },
 };
 
@@ -62,6 +80,12 @@ function Ar(props: any) {
       });
     }
   }
+
+  useEffect(() => {
+    console.log(
+      `Rotate Y : ${rotateY}. Rotate X : ${rotateX}. Scale: ${scale}`,
+    );
+  }, [scale, rotateX, rotateY]);
 
   return (
     <ViroARScene onTrackingUpdated={onTrackingUpdated}>
@@ -103,7 +127,9 @@ function Ar(props: any) {
         /> */}
 
         <Viro3DObject
-          position={[5, 0, 0]}
+          position={
+            selectedMateri.initialValue.position as [number, number, number]
+          }
           // transformBehaviors={['billboardX']}
           source={selectedMateri.model}
           rotation={[rotateX || 0, rotateY || 0, 0]}
@@ -150,10 +176,11 @@ export default function ArView({
   },
   'Ar'
 >) {
-  const [scale, setScale] = useState(0.1);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
   const paramType = route.params.type;
+  const selected = materi[paramType];
+  const [scale, setScale] = useState(selected.initialValue.scale);
+  const [rotateX, setRotateX] = useState(selected.initialValue.rotateX);
+  const [rotateY, setRotateY] = useState(selected.initialValue.rotateY);
 
   return (
     <View style={styles.container}>
@@ -174,13 +201,16 @@ export default function ArView({
         <View style={styles.containerActionHead}>
           <Button
             onPress={() => {
-              setScale(state => state - 0.1);
+              setScale(state => {
+                const st = state - 0.1;
+                return st <= 0 ? 0.1 : st;
+              });
             }}
             title="Scale Down"
           />
           <Button
             onPress={() => {
-              setScale(0.2);
+              setScale(0.1);
               setRotateX(0);
               setRotateY(0);
             }}
