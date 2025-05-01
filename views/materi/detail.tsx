@@ -1,4 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {useIsDeviceSupportAR} from 'hooks';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
 import React, {
   Image,
@@ -134,6 +135,7 @@ export default function MateriDetailView({
 }: NativeStackScreenProps<ScreenType, 'MateriDetail'>) {
   const paramType = route.params.type;
   const selectedMateri = materi[paramType];
+  const isSupportAR = useIsDeviceSupportAR();
 
   return (
     <BackgroundWithSectionLayout>
@@ -149,15 +151,18 @@ export default function MateriDetailView({
             );
           })}
 
-        <TouchableHighlight
-          style={styles.touchableButtonStyle}
-          underlayColor={'transparent'}
-          activeOpacity={0.6}
-          onPress={() => navigation.navigate('Ar', {type: paramType})}>
-          <View style={styles.itemButton}>
-            <Text style={styles.itemButtonText}>Lihat Model AR</Text>
-          </View>
-        </TouchableHighlight>
+        {/* Kalau Device Support AR, maka munculkan tombol lihat model ar */}
+        {isSupportAR && (
+          <TouchableHighlight
+            style={styles.touchableButtonStyle}
+            underlayColor={'transparent'}
+            activeOpacity={0.6}
+            onPress={() => navigation.navigate('Ar', {type: paramType})}>
+            <View style={styles.itemButton}>
+              <Text style={styles.itemButtonText}>Lihat Model AR</Text>
+            </View>
+          </TouchableHighlight>
+        )}
       </>
     </BackgroundWithSectionLayout>
   );
