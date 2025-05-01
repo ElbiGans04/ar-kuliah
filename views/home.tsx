@@ -1,5 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {AppDetailContext} from 'hooks/index';
+import {AppDetailContext, useIsDeviceSupportAR} from 'hooks/index';
 import {useContext, useState} from 'react';
 import React, {
   BackHandler,
@@ -135,7 +135,7 @@ export default function HomeView({
 }: NativeStackScreenProps<ScreenType, 'Home'>) {
   const appInfo = useContext(AppDetailContext);
   const [modal, setModal] = useState(false);
-
+  const isSupportAR = useIsDeviceSupportAR();
   return (
     <ScrollView style={styles.scrollViewContainer}>
       <View style={styles.container}>
@@ -158,20 +158,18 @@ export default function HomeView({
         </View>
         <View style={styles.containerBody}>
           {/* Mulai Ar */}
-          <TouchableOpacity
-            onPress={() => {
-              // navigation.navigate('Ar', {
-              //   type: 'kuda',
-              //   imageTracking: true,
-              // });
-              setModal(true);
-            }}
-            activeOpacity={0.7}>
-            <View style={styles.button}>
-              <Image source={require('assets/icons/Camera-white.png')} />
-              <Text style={styles.buttonText}>MULAI AR</Text>
-            </View>
-          </TouchableOpacity>
+          {isSupportAR && (
+            <TouchableOpacity
+              onPress={() => {
+                setModal(true);
+              }}
+              activeOpacity={0.7}>
+              <View style={styles.button}>
+                <Image source={require('assets/icons/Camera-white.png')} />
+                <Text style={styles.buttonText}>MULAI AR</Text>
+              </View>
+            </TouchableOpacity>
+          )}
           {/* Materi */}
           <TouchableOpacity
             onPress={() => {
