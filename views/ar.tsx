@@ -8,7 +8,6 @@ import {
   ViroQuad,
   ViroSpinner,
   ViroSpotLight,
-  ViroTrackingStateConstants,
 } from '@reactvision/react-viro';
 import React, {useState} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
@@ -74,20 +73,8 @@ function Ar(props: any) {
     text: 'Initializing AR...',
   });
 
-  function onTrackingUpdated(stateParam: ViroTrackingStateConstants) {
-    if (
-      !state.hasARInitialized &&
-      stateParam === ViroTrackingStateConstants.TRACKING_NORMAL
-    ) {
-      setState({
-        hasARInitialized: true,
-        text: 'Hello World!',
-      });
-    }
-  }
-
   return (
-    <ViroARScene onTrackingUpdated={onTrackingUpdated}>
+    <ViroARScene>
       <ViroNode position={[0, 0, -3]} onDrag={() => {}}>
         {/* Loading Text */}
         {!state.hasARInitialized && (
@@ -108,23 +95,6 @@ function Ar(props: any) {
           shadowOpacity={0.7}
         />
 
-        {/* Button Over 3DObject */}
-        {/* <ViroButton
-          source={require('./assets/mobil.jpg')}
-          position={[0.25, 0.6, 0]}
-          height={0.3}
-          width={0.3}
-          style={{flex: 2}}
-          onClick={() => console.log('Hello World' + Date.now())}
-        />
-        <ViroButton
-          source={require('./assets/mobil.jpg')}
-          position={[-0.25, 0.6, 0]}
-          height={0.3}
-          width={0.3}
-          style={{flex: 2}}
-        /> */}
-
         <Viro3DObject
           position={
             selectedMateri.initialValue.position as [number, number, number]
@@ -137,21 +107,13 @@ function Ar(props: any) {
           lightReceivingBitMask={3}
           shadowCastingBitMask={2}
           resources={selectedMateri.assets}
+          onLoadEnd={() => {
+            setState({
+              hasARInitialized: true,
+              text: '',
+            });
+          }}
         />
-
-        {/* <Viro3DObject
-          // transformBehaviors={['billboardX']}
-          source={require('assets/ar/dear/12961_White-Tailed_Deer_v1_l2_obj.obj')}
-          rotation={[rotateX || 0, rotateY || 0, 0]}
-          scale={[scale || 0, scale || 0, scale || 0]}
-          type="OBJ"
-          lightReceivingBitMask={3}
-          shadowCastingBitMask={2}
-          resources={[
-            require('assets/ar/dear/12961_White-Tailed_Deer_v1_l2.mtl'),
-            require('assets/ar/dear/12961_White-TailedDeer_diffuse.jpg'),
-          ]}
-        /> */}
 
         <ViroQuad
           rotation={[-90, 0, 0]}
