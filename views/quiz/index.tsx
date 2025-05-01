@@ -60,7 +60,7 @@ export default function QuizView({
             <View>
               <Image
                 style={styles.itemImage}
-                source={require('../../assets/quis/bg-icon-hewan.jpg')}
+                source={require('assets/images/quis/bg-icon-hewan.jpg')}
               />
               <Text style={styles.itemText}>HEWAN</Text>
             </View>

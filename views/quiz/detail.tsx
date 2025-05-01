@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
 
 const answer = [
   {
-    image: require('../../assets/quis/ras.jpg'),
+    image: require('assets/images/quis/ras.jpg'),
     title: 'Apa saja ras kucing yang paling populer di dunia?',
     answer: [
       'Maine Coon, Siamese, Persian, Ragdoll',
@@ -120,7 +120,7 @@ const answer = [
     rightAnswer: 'Maine Coon, Siamese, Persian, Ragdoll',
   },
   {
-    image: require('../../assets/quis/kucing-mandi.jpg'),
+    image: require('assets/images/quis/kucing-mandi.jpg'),
     title: 'Mengapa kucing sering menjilati tubuhnya sendiri?',
     answer: [
       'Untuk memberi tanda teritorial',
@@ -158,7 +158,7 @@ export default function QuizDetailView({
   function PlayMusic() {
     try {
       setAppReady(false);
-      SoundPlayer.playAsset(require('../../assets/songs/backsong.mp3'));
+      SoundPlayer.playAsset(require('assets/songs/backsong.mp3'));
     } catch (err) {
       console.log('Gagal memutar Backsound');
     }

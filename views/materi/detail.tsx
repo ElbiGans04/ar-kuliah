@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 
 const materi = {
   kucing: {
-    image: require('../../assets/materi/amber-kipp-75715CVEJhI-unsplash.jpg'),
+    image: require('assets/images/materi/amber-kipp-75715CVEJhI-unsplash.jpg'),
     content: [
       {
         head: 'Apa itu Kucing ?',
@@ -77,7 +77,7 @@ const materi = {
     ],
   },
   rusa: {
-    image: require('../../assets/materi/didin-hasbullah-piNiZmg-wlc-unsplash.jpg'),
+    image: require('assets/images/materi/didin-hasbullah-piNiZmg-wlc-unsplash.jpg'),
     content: [
       {
         head: 'Apa itu Rusa ?',
@@ -102,7 +102,7 @@ const materi = {
     ],
   },
   kuda: {
-    image: require('../../assets/materi/sinitta-leunen-nUl8Iz_EAkE-unsplash.jpg'),
+    image: require('assets/images/materi/sinitta-leunen-nUl8Iz_EAkE-unsplash.jpg'),
     content: [
       {
         head: 'Apa itu Kuda ?',

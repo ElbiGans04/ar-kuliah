@@ -51,7 +51,7 @@ export default function BackgroundWithSectionLayout({
         <View style={styles.containerBackground}>
           <Image
             style={styles.containerBackgroundImage}
-            source={require('assets/bg.png')}
+            source={require('assets/images/bg.png')}
           />
         </View>
         <View style={styles.container}>{children}</View>

@@ -102,7 +102,7 @@ export default function HomeView({
           <View style={styles.imageBackgroundContainer}>
             <Image
               style={styles.containerImageBackground}
-              source={require('assets/bg.png')}
+              source={require('assets/images/bg.png')}
             />
           </View>
           <View style={styles.containerHead}>
@@ -111,7 +111,7 @@ export default function HomeView({
             </Text>
             <Image
               style={styles.containerImage}
-              source={require('../assets/logo.png')}
+              source={require('assets/images/logo.png')}
             />
           </View>
         </View>
@@ -123,7 +123,7 @@ export default function HomeView({
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
-              <Image source={require('../assets/icons/Camera-white.png')} />
+              <Image source={require('assets/icons/Camera-white.png')} />
               <Text style={styles.buttonText}>MULAI AR</Text>
             </View>
           </TouchableOpacity>
@@ -134,7 +134,7 @@ export default function HomeView({
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
-              <Image source={require('../assets/icons/Book.png')} />
+              <Image source={require('assets/icons/Book.png')} />
               <Text style={styles.buttonText}>MATERI</Text>
             </View>
           </TouchableOpacity>
@@ -145,7 +145,7 @@ export default function HomeView({
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
-              <Image source={require('../assets/icons/Test-white.png')} />
+              <Image source={require('assets/icons/Test-white.png')} />
               <Text style={styles.buttonText}>QUIZ</Text>
             </View>
           </TouchableOpacity>
@@ -156,7 +156,7 @@ export default function HomeView({
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
-              <Image source={require('../assets/icons/Index-white.png')} />
+              <Image source={require('assets/icons/Index-white.png')} />
               <Text style={styles.buttonText}>PANDUAN</Text>
             </View>
           </TouchableOpacity>
@@ -167,7 +167,7 @@ export default function HomeView({
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
-              <Image source={require('../assets/icons/Info-white.png')} />
+              <Image source={require('assets/icons/Info-white.png')} />
               <Text style={styles.buttonText}>TENTANG</Text>
             </View>
           </TouchableOpacity>
@@ -180,7 +180,7 @@ export default function HomeView({
               }}
               activeOpacity={0.7}>
               <View style={styles.button}>
-                <Image source={require('../assets/icons/Logout.png')} />
+                <Image source={require('assets/icons/Logout.png')} />
                 <Text style={styles.buttonText}>KELUAR APLIKASI</Text>
               </View>
             </TouchableOpacity>

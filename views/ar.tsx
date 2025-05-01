@@ -20,10 +20,10 @@ function get10Percent(value: number): number {
 
 const materi = {
   kucing: {
-    model: require('../assets/ar/cat/12221_Cat_v1_l3_obj.obj'),
+    model: require('assets/ar/cat/12221_Cat_v1_l3_obj.obj'),
     assets: [
-      require('../assets/ar/cat/12221_Cat_v1_l3.mtl'),
-      require('../assets/ar/cat/Cat_bump.jpg'),
+      require('assets/ar/cat/12221_Cat_v1_l3.mtl'),
+      require('assets/ar/cat/Cat_bump.jpg'),
     ],
     initialValue: {
       scale: 0.04,
@@ -33,10 +33,10 @@ const materi = {
     },
   },
   rusa: {
-    model: require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2_obj.obj'),
+    model: require('assets/ar/dear/12961_White-Tailed_Deer_v1_l2_obj.obj'),
     assets: [
-      require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2.mtl'),
-      require('../assets/ar/dear/12961_White-TailedDeer_diffuse.jpg'),
+      require('assets/ar/dear/12961_White-Tailed_Deer_v1_l2.mtl'),
+      require('assets/ar/dear/12961_White-TailedDeer_diffuse.jpg'),
     ],
     initialValue: {
       scale: 0.05,
@@ -46,10 +46,10 @@ const materi = {
     },
   },
   kuda: {
-    model: require('../assets/ar/horse/10026_Horse_v01-it2_obj.obj'),
+    model: require('assets/ar/horse/10026_Horse_v01-it2_obj.obj'),
     assets: [
-      require('../assets/ar/horse/10026_Horse_v01-it2.mtl'),
-      require('../assets/ar/horse/Horse_v01.jpg'),
+      require('assets/ar/horse/10026_Horse_v01-it2.mtl'),
+      require('assets/ar/horse/Horse_v01.jpg'),
     ],
     initialValue: {
       scale: 0.0015,
@@ -141,15 +141,15 @@ function Ar(props: any) {
 
         {/* <Viro3DObject
           // transformBehaviors={['billboardX']}
-          source={require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2_obj.obj')}
+          source={require('assets/ar/dear/12961_White-Tailed_Deer_v1_l2_obj.obj')}
           rotation={[rotateX || 0, rotateY || 0, 0]}
           scale={[scale || 0, scale || 0, scale || 0]}
           type="OBJ"
           lightReceivingBitMask={3}
           shadowCastingBitMask={2}
           resources={[
-            require('../assets/ar/dear/12961_White-Tailed_Deer_v1_l2.mtl'),
-            require('../assets/ar/dear/12961_White-TailedDeer_diffuse.jpg'),
+            require('assets/ar/dear/12961_White-Tailed_Deer_v1_l2.mtl'),
+            require('assets/ar/dear/12961_White-TailedDeer_diffuse.jpg'),
           ]}
         /> */}
 
