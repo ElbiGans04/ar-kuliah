@@ -12,7 +12,7 @@ import {
 } from '@reactvision/react-viro';
 import React, {useEffect, useState} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
-import { ScreenType } from 'routes';
+import {ScreenType} from 'routes';
 
 const materi = {
   kucing: {
@@ -169,10 +169,7 @@ function Ar(props: any) {
 
 export default function ArView({
   route,
-}: NativeStackScreenProps<
-  ScreenType,
-  'Ar'
->) {
+}: NativeStackScreenProps<ScreenType, 'Ar'>) {
   const paramType = route.params.type;
   const selected = materi[paramType];
   const [scale, setScale] = useState(selected.initialValue.scale);
@@ -207,9 +204,9 @@ export default function ArView({
           />
           <Button
             onPress={() => {
-              setScale(0.1);
-              setRotateX(0);
-              setRotateY(0);
+              setScale(selected.initialValue.scale);
+              setRotateX(selected.initialValue.rotateX);
+              setRotateY(selected.initialValue.rotateY);
             }}
             title="Reset Position"
           />
