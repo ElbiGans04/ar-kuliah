@@ -2,8 +2,10 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {
   Viro3DObject,
   ViroAmbientLight,
+  ViroARImageMarker,
   ViroARScene,
   ViroARSceneNavigator,
+  ViroARTrackingTargets,
   ViroNode,
   ViroQuad,
   ViroSpinner,
@@ -12,6 +14,14 @@ import {
 import React, {useState} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 import {ScreenType} from 'routes';
+
+ViroARTrackingTargets.createTargets({
+  logo: {
+    source: require('assets/ar/tesla.png'),
+    orientation: 'Up',
+    physicalWidth: 0.125, // real world width in meters
+  },
+});
 
 function get10Percent(value: number): number {
   return (value * 10) / 100;
@@ -26,6 +36,7 @@ const materi = {
     ],
     initialValue: {
       scale: 0.04,
+      scaleImageRecognition: 0.004,
       rotateX: -90,
       rotateY: 50,
       position: [0, -2, 0],
@@ -39,6 +50,7 @@ const materi = {
     ],
     initialValue: {
       scale: 0.05,
+      scaleImageRecognition: 0.004,
       rotateX: -90,
       rotateY: -60,
       position: [0, -2, 0],
@@ -52,6 +64,7 @@ const materi = {
     ],
     initialValue: {
       scale: 0.0015,
+      scaleImageRecognition: 0.0001,
       rotateX: -90,
       rotateY: 50,
       position: [0, -3, 0],
@@ -60,12 +73,13 @@ const materi = {
 };
 
 function Ar(props: any) {
-  const {scale, rotateX, rotateY, paramType} = props.sceneNavigator
-    .viroAppProps as {
+  const {scale, rotateX, rotateY, paramType, imageTracking} = props
+    .sceneNavigator.viroAppProps as {
     paramType: 'rusa' | 'kucing' | 'kuda';
     scale: number;
     rotateY: number;
     rotateX: number;
+    imageTracking: boolean;
   };
   const selectedMateri = materi[paramType];
   const [state, setState] = useState({
@@ -73,8 +87,36 @@ function Ar(props: any) {
     text: 'Initializing AR...',
   });
 
+  const model3d = (
+    <Viro3DObject
+      position={
+        imageTracking
+          ? [0, 0, 0]
+          : (selectedMateri.initialValue.position as [number, number, number])
+      }
+      // transformBehaviors={['billboardX']}
+      source={selectedMateri.model}
+      rotation={[rotateX || 0, rotateY || 0, 0]}
+      scale={[scale || 0, scale || 0, scale || 0]}
+      type="OBJ"
+      lightReceivingBitMask={3}
+      shadowCastingBitMask={2}
+      resources={selectedMateri.assets}
+      onLoadEnd={() => {
+        setState({
+          hasARInitialized: true,
+          text: '',
+        });
+      }}
+    />
+  );
+
   return (
     <ViroARScene>
+      {/* Jika Image Tracking */}
+      {imageTracking && (
+        <ViroARImageMarker target={'logo'}>{model3d}</ViroARImageMarker>
+      )}
       <ViroNode position={[0, 0, -3]} onDrag={() => {}}>
         {/* Loading Text */}
         {!state.hasARInitialized && (
@@ -95,25 +137,7 @@ function Ar(props: any) {
           shadowOpacity={0.7}
         />
 
-        <Viro3DObject
-          position={
-            selectedMateri.initialValue.position as [number, number, number]
-          }
-          // transformBehaviors={['billboardX']}
-          source={selectedMateri.model}
-          rotation={[rotateX || 0, rotateY || 0, 0]}
-          scale={[scale || 0, scale || 0, scale || 0]}
-          type="OBJ"
-          lightReceivingBitMask={3}
-          shadowCastingBitMask={2}
-          resources={selectedMateri.assets}
-          onLoadEnd={() => {
-            setState({
-              hasARInitialized: true,
-              text: '',
-            });
-          }}
-        />
+        {model3d}
 
         <ViroQuad
           rotation={[-90, 0, 0]}
@@ -132,7 +156,10 @@ export default function ArView({
 }: NativeStackScreenProps<ScreenType, 'Ar'>) {
   const paramType = route.params.type;
   const selected = materi[paramType];
-  const [scale, setScale] = useState(selected.initialValue.scale);
+  const scaleValue = route.params.imageTracking
+    ? selected.initialValue.scaleImageRecognition
+    : selected.initialValue.scale;
+  const [scale, setScale] = useState(scaleValue);
   const [rotateX, setRotateX] = useState(selected.initialValue.rotateX);
   const [rotateY, setRotateY] = useState(selected.initialValue.rotateY);
 
@@ -145,6 +172,7 @@ export default function ArView({
           rotateX,
           rotateY,
           paramType,
+          imageTracking: route.params.imageTracking,
         }}
         initialScene={{
           scene: Ar as any,
@@ -164,7 +192,7 @@ export default function ArView({
           />
           <Button
             onPress={() => {
-              setScale(selected.initialValue.scale);
+              setScale(scaleValue);
               setRotateX(selected.initialValue.rotateX);
               setRotateY(selected.initialValue.rotateY);
             }}

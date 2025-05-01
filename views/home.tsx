@@ -1,6 +1,6 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {AppDetailContext} from 'hooks/index';
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 import React, {
   BackHandler,
   Image,
@@ -8,9 +8,11 @@ import React, {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableHighlight,
   TouchableOpacity,
   View,
 } from 'react-native';
+import ReactNativeModal from 'react-native-modal';
 import {ScreenType} from 'routes';
 
 const styles = StyleSheet.create({
@@ -88,12 +90,51 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   },
+  modalContainer: {
+    backgroundColor: 'white',
+    paddingHorizontal: 16,
+    paddingVertical: 32,
+    borderRadius: 10,
+    gap: 24,
+  },
+  modalText: {
+    color: '#0A3180',
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  modalContainerAction: {
+    gap: 12,
+  },
+  touchableButtonStyle: {
+    overflow: 'hidden',
+  },
+  itemButton: {
+    backgroundColor: '#0A3180',
+    padding: 16,
+    borderRadius: 10,
+  },
+  itemButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  button2: {
+    backgroundColor: '#CFCDCD',
+    padding: 16,
+    borderRadius: 10,
+  },
+  button2Text: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: '#0A3180',
+  },
 });
 
 export default function HomeView({
   navigation,
 }: NativeStackScreenProps<ScreenType, 'Home'>) {
   const appInfo = useContext(AppDetailContext);
+  const [modal, setModal] = useState(false);
 
   return (
     <ScrollView style={styles.scrollViewContainer}>
@@ -119,7 +160,11 @@ export default function HomeView({
           {/* Mulai Ar */}
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Materi');
+              // navigation.navigate('Ar', {
+              //   type: 'kuda',
+              //   imageTracking: true,
+              // });
+              setModal(true);
             }}
             activeOpacity={0.7}>
             <View style={styles.button}>
@@ -197,6 +242,71 @@ export default function HomeView({
             }}
             title="Go To Ar"
           /> */}
+
+          {/* Modal */}
+          <View>
+            <ReactNativeModal isVisible={modal}>
+              <View style={styles.modalContainer}>
+                <Text style={styles.modalText}>Pilih Model</Text>
+                <View style={styles.modalContainerAction}>
+                  <TouchableHighlight
+                    style={styles.touchableButtonStyle}
+                    underlayColor={'transparent'}
+                    activeOpacity={0.6}
+                    onPress={() => {
+                      setModal(false);
+                      navigation.navigate('Ar', {
+                        type: 'kucing',
+                        imageTracking: true,
+                      });
+                    }}>
+                    <View style={styles.itemButton}>
+                      <Text style={styles.itemButtonText}>Kucing</Text>
+                    </View>
+                  </TouchableHighlight>
+                  <TouchableHighlight
+                    style={styles.touchableButtonStyle}
+                    underlayColor={'transparent'}
+                    activeOpacity={0.6}
+                    onPress={() => {
+                      setModal(false);
+                      navigation.navigate('Ar', {
+                        type: 'kuda',
+                        imageTracking: true,
+                      });
+                    }}>
+                    <View style={styles.itemButton}>
+                      <Text style={styles.itemButtonText}>Kuda</Text>
+                    </View>
+                  </TouchableHighlight>
+                  <TouchableHighlight
+                    style={styles.touchableButtonStyle}
+                    underlayColor={'transparent'}
+                    activeOpacity={0.6}
+                    onPress={() => {
+                      setModal(false);
+                      navigation.navigate('Ar', {
+                        type: 'rusa',
+                        imageTracking: true,
+                      });
+                    }}>
+                    <View style={styles.itemButton}>
+                      <Text style={styles.itemButtonText}>Rusa</Text>
+                    </View>
+                  </TouchableHighlight>
+                  <TouchableHighlight
+                    style={styles.touchableButtonStyle}
+                    underlayColor={'transparent'}
+                    activeOpacity={0.6}
+                    onPress={() => setModal(false)}>
+                    <View style={styles.button2}>
+                      <Text style={styles.button2Text}>Kembali</Text>
+                    </View>
+                  </TouchableHighlight>
+                </View>
+              </View>
+            </ReactNativeModal>
+          </View>
         </View>
       </View>
     </ScrollView>

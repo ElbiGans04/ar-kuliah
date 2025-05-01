@@ -23,6 +23,7 @@ export type ScreenType = {
   };
   Ar: {
     type: 'rusa' | 'kucing' | 'kuda';
+    imageTracking: boolean;
   };
 };
 

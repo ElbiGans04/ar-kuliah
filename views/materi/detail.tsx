@@ -157,7 +157,9 @@ export default function MateriDetailView({
             style={styles.touchableButtonStyle}
             underlayColor={'transparent'}
             activeOpacity={0.6}
-            onPress={() => navigation.navigate('Ar', {type: paramType})}>
+            onPress={() =>
+              navigation.navigate('Ar', {type: paramType, imageTracking: false})
+            }>
             <View style={styles.itemButton}>
               <Text style={styles.itemButtonText}>Lihat Model AR</Text>
             </View>
