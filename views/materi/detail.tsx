@@ -3,6 +3,7 @@ import {useIsDeviceSupportAR} from 'hooks';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
 import React, {
   Image,
+  ImageSourcePropType,
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -43,9 +44,25 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  imageContent: {
+    width: 'auto',
+    height: 200,
+    objectFit: 'contain',
+  },
 });
 
-const materi = {
+interface MateriType {
+  [index: string]: {
+    image: ImageSourcePropType;
+    content: {
+      head: string;
+      body: string[];
+      image?: ImageSourcePropType;
+    }[];
+  };
+}
+
+const materi: MateriType = {
   kucing: {
     image: require('assets/images/materi/amber-kipp-75715CVEJhI-unsplash.jpg'),
     content: [
@@ -87,6 +104,7 @@ const materi = {
         ],
       },
       {
+        image: require('assets/images/materi/rusa.jpg'),
         head: 'Ciri-ciri Rusa :',
         body: [
           `Memiliki tubuh ramping dan kaki panjang untuk berlari cepat.`,
@@ -145,6 +163,9 @@ export default function MateriDetailView({
           selectedMateri.content.map((val, index) => {
             return (
               <View key={index} style={styles.containerText}>
+                {val.image && (
+                  <Image style={styles.imageContent} source={val.image} />
+                )}
                 <Text style={styles.textHeader}>{val.head}</Text>
                 <Text>{val.body}</Text>
               </View>
