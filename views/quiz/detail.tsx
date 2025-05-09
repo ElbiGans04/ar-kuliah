@@ -269,7 +269,7 @@ export default function QuizDetailView({
       <>
         <View style={styles.containerHeader}>
           <Text style={styles.textInfo}>Pertanyaan {next + 1} dari 2</Text>
-          <Text style={styles.textHeader}>{answer[next].title}</Text>
+          <Text style={styles.textHeader}>{questionsRandom[next].title}</Text>
         </View>
 
         <View>
