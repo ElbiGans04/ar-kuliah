@@ -145,6 +145,82 @@ const materi: MateriType = {
       },
     ],
   },
+  dog: {
+    image: require('assets/images/materi/anjing.jpg'),
+    content: [
+      {
+        head: 'Apa itu Anjing ?',
+        body: [
+          `Mereka bisa menggonggong "guk guk!" dan suka diajak bermain.
+Anjing punya hidung yang sangat tajam, bisa mencium bau dari jauh.
+Beberapa anjing juga dilatih untuk membantu orang, seperti menolong orang buta atau menjaga rumah.
+Anjing senang diajak jalan-jalan dan bisa menjadi sahabat yang baik untuk anak-anak.`,
+        ],
+      },
+      {
+        head: 'Ciri-ciri Anjing :',
+        body: [
+          `Bersuara “guk guk” atau “woof” saat menggonggong.`,
+          `Hidungnya tajam untuk mencium bau dari jauh.`,
+          `Mereka suka bermain dan berlari-lari.`,
+        ],
+      },
+      {
+        head: 'Makanan Anjing, Apa itu ?',
+        body: [
+          `Anjing bisa makan daging atau sayur, Anjing tidak boleh makan cokelat atau makanan manusia yang terlalu asin dan manis.`,
+        ],
+      },
+    ],
+  },
+  chiken: {
+    image: require('assets/images/materi/ayam.jpg'),
+    content: [
+      {
+        head: 'Apa itu Ayam ?',
+        body: [
+          `Ayam adalah hewan yang hidup di darat. Ayam punya dua kaki, dua sayap, dan paruh. Ayam bisa berkokok ‘kukuruyuk!’ dan bertelur`,
+        ],
+      },
+      {
+        head: 'Ciri-ciri Ayam :',
+        body: [
+          `Punya Dua Kaki dan Cakar`,
+          `Ayam tidak punya gigi. Ia makan pakai paruh`,
+          `Bulu ayam halus, warnanya bisa putih, merah, cokelat, atau hitam`,
+        ],
+      },
+      {
+        head: 'Makanan Ayam, Apa itu ?',
+        body: [`Ayam suka makan biji-bijian, nasi, dan cacing`],
+      },
+    ],
+  },
+  elephant: {
+    image: require('assets/images/materi/gajah.jpg'),
+    content: [
+      {
+        head: 'Apa itu Gajah ?',
+        body: [
+          `Gajah adalah hewan darat terbesar di dunia.
+Mereka hidup di hutan dan padang rumput, dan suka hidup berkelompok.
+Gajah dikenal karena tubuhnya yang besar dan belalainya yang panjang`,
+        ],
+      },
+      {
+        head: 'Ciri-ciri Gajah :',
+        body: [
+          `Memiliki tubuh besar dan kuat`,
+          `Punya belalai panjang untuk mengambil makanan dan minum`,
+          `Memiliki telinga lebar yang bisa digerakkan`,
+        ],
+      },
+      {
+        head: 'Makanan Gajah, Apa itu ?',
+        body: [`Gajah suka makan rumput, daun, buah-buahan, dan kulit pohon.`],
+      },
+    ],
+  },
 };
 
 export default function MateriDetailView({

@@ -19,10 +19,10 @@ export type ScreenType = {
   QuizDetail: undefined;
   Materi: undefined;
   MateriDetail: {
-    type: 'rusa' | 'kucing' | 'kuda';
+    type: 'rusa' | 'kucing' | 'kuda' | 'dog' | 'chiken' | 'elephant';
   };
   Ar: {
-    type: 'rusa' | 'kucing' | 'kuda';
+    type: 'rusa' | 'kucing' | 'kuda' | 'dog' | 'chiken' | 'elephant';
     imageTracking: boolean;
   };
 };

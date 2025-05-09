@@ -11,7 +11,7 @@ import {
   ViroSpinner,
   ViroSpotLight,
 } from '@reactvision/react-viro';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 import {ScreenType} from 'routes';
 
@@ -70,6 +70,58 @@ const materi = {
       position: [0, -3, 0],
     },
   },
+  dog: {
+    model: require('assets/ar/dog/13041_Beagle_v1_L1_obj.obj'),
+    assets: [
+      require('assets/ar/dog/13041_Beagle_v1_L1.mtl'),
+      require('assets/ar/dog/13041_Beagle_diffuse.jpg'),
+    ],
+    initialValue: {
+      scale: 0.03,
+      scaleImageRecognition: 0.002,
+      rotateX: -90,
+      rotateY: 50,
+      position: [0, -3, 0],
+    },
+  },
+  chiken: {
+    model: require('assets/ar/chiken/chiken.obj'),
+    assets: [
+      require('assets/ar/chiken/uploads_files_5014710_Hen_Low_Poly.mtl'),
+      require('assets/ar/chiken/Hen_Quad_Diffuse.png'),
+      require('assets/ar/chiken/Hen_Quad_Normal.png'),
+      require('assets/ar/chiken/Hen_Quad_Roughness.png'),
+      require('assets/ar/chiken/Hen_Tris_Diffuse.png'),
+      require('assets/ar/chiken/Hen_Tris_Normal.png'),
+      require('assets/ar/chiken/Hen_Tris_Roughness.png'),
+    ],
+    initialValue: {
+      scale: 5,
+      scaleImageRecognition: 0.25,
+      rotateX: 0,
+      rotateY: -40,
+      position: [0, -3, 0],
+    },
+  },
+  elephant: {
+    model: require('assets/ar/elephant/gajah.obj'),
+    assets: [
+      require('assets/ar/elephant/uploads_files_5014756_Elephant_Low_Poly.mtl'),
+      require('assets/ar/elephant/Elephant_Quad_Diffuse.png'),
+      require('assets/ar/elephant/Elephant_Quad_Normal.png'),
+      require('assets/ar/elephant/Elephant_Quad_Roughness.png'),
+      require('assets/ar/elephant/Elephant_Tris_Diffuse.png'),
+      require('assets/ar/elephant/Elephant_Tris_Normal.png'),
+      require('assets/ar/elephant/Elephant_Tris_Roughness.png'),
+    ],
+    initialValue: {
+      scale: 0.81,
+      scaleImageRecognition: 0.04,
+      rotateX: 0,
+      rotateY: -40,
+      position: [0, -3, 0],
+    },
+  },
 };
 
 function Ar(props: any) {
@@ -110,6 +162,12 @@ function Ar(props: any) {
       }}
     />
   );
+
+  useEffect(() => {
+    console.log(
+      `Rotate X : ${rotateX}, Rotate Y : ${rotateY}, Scale: ${scale}`,
+    );
+  }, [rotateX, rotateY, scale]);
 
   return (
     <ViroARScene>

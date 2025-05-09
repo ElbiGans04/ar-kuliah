@@ -35,6 +35,27 @@ const materi = [
     image: require('assets/images/materi/didin-hasbullah-piNiZmg-wlc-unsplash.jpg'),
     brief: 'Rusa bisa menumbuhkan tanduk baru setiap tahun. Kok bisa, ya?',
   },
+  {
+    key: 'dog',
+    category: 'Hewan',
+    textShow: 'Anjing',
+    image: require('assets/images/materi/anjing.jpg'),
+    brief: 'Anjing bisa mencium bau 100.000 kali lebih tajam dari manusia! Wah, kira-kira mereka bisa mencium apa aja, ya?',
+  },
+  {
+    key: 'chiken',
+    category: 'Hewan',
+    textShow: 'Ayam',
+    image: require('assets/images/materi/ayam.jpg'),
+    brief: 'Tahukah kamu? Ayam bisa mengingat lebih dari 100 wajah ayam lain!',
+  },
+  {
+    key: 'elephant',
+    category: 'Hewan',
+    textShow: 'Gajah',
+    image: require('assets/images/materi/gajah.jpg'),
+    brief: 'Gajah bisa mengenali dirinya sendiri di cermin! Itu artinya, mereka punya otak yang sangat pintar dan bisa sadar siapa diri mereka. Wah, seperti manusia ya?',
+  },
 ] as const;
 
 const tab = ['Hewan', 'Buah', 'Angka'] as const;

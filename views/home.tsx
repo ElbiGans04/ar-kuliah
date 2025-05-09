@@ -242,6 +242,51 @@ export default function HomeView({
                     onPress={() => {
                       setModal(false);
                       navigation.navigate('Ar', {
+                        type: 'dog',
+                        imageTracking: true,
+                      });
+                    }}>
+                    <View style={styles.itemButton}>
+                      <Text style={styles.itemButtonText}>Anjing</Text>
+                    </View>
+                  </TouchableHighlight>
+                  <TouchableHighlight
+                    style={styles.touchableButtonStyle}
+                    underlayColor={'transparent'}
+                    activeOpacity={0.6}
+                    onPress={() => {
+                      setModal(false);
+                      navigation.navigate('Ar', {
+                        type: 'chiken',
+                        imageTracking: true,
+                      });
+                    }}>
+                    <View style={styles.itemButton}>
+                      <Text style={styles.itemButtonText}>Ayam</Text>
+                    </View>
+                  </TouchableHighlight>
+                  <TouchableHighlight
+                    style={styles.touchableButtonStyle}
+                    underlayColor={'transparent'}
+                    activeOpacity={0.6}
+                    onPress={() => {
+                      setModal(false);
+                      navigation.navigate('Ar', {
+                        type: 'elephant',
+                        imageTracking: true,
+                      });
+                    }}>
+                    <View style={styles.itemButton}>
+                      <Text style={styles.itemButtonText}>Gajah</Text>
+                    </View>
+                  </TouchableHighlight>
+                  <TouchableHighlight
+                    style={styles.touchableButtonStyle}
+                    underlayColor={'transparent'}
+                    activeOpacity={0.6}
+                    onPress={() => {
+                      setModal(false);
+                      navigation.navigate('Ar', {
                         type: 'kucing',
                         imageTracking: true,
                       });
