@@ -109,15 +109,15 @@ const styles = StyleSheet.create({
 
 const answer = [
   {
-    image: require('assets/images/quis/ras.jpg'),
-    title: 'Apa saja ras kucing yang paling populer di dunia?',
+    image: require('assets/images/quis/gajah-makan.jpg'),
+    title: 'Gajah menggunakan apa untuk mengambil makanan?',
     answer: [
-      'Maine Coon, Siamese, Persian, Ragdoll',
-      'Bengal, Sphynx, British Shorthair, Scottish Fold',
-      'Abyssinian, Burmese, Munchkin, Exotic Shorthair',
-      'Siamese, Russian Blue, Manx, Turkish Van',
+      'Taring',
+      'Lidah',
+      'Belalai',
+      'Hidung biasa',
     ],
-    rightAnswer: 'Maine Coon, Siamese, Persian, Ragdoll',
+    rightAnswer: 'Belalai',
   },
   {
     image: require('assets/images/quis/kucing-mandi.jpg'),
@@ -129,6 +129,39 @@ const answer = [
       'Untuk mempercepat pertumbuhan bulu',
     ],
     rightAnswer: 'Untuk menjaga kebersihan tubuhnya',
+  },
+  {
+    image: require('assets/images/quis/anjing-makan.png'),
+    title: 'Anjing suka makan apa?',
+    answer: [
+      'Cokelat',
+      'Dog food',
+      'Es krim',
+      'Permen',
+    ],
+    rightAnswer: 'Dog food',
+  },
+  {
+    image: require('assets/images/quis/rusa-lari.jpg'),
+    title: 'Rusa suka hidup di mana?',
+    answer: [
+      'Di kolam',
+      'Di hutan',
+      'Di langit',
+      'Di laut',
+    ],
+    rightAnswer: 'Di hutan',
+  },
+  {
+    image: require('assets/images/quis/anjing-menggonggong.jpg'),
+    title: 'Anjing bersuara seperti apa?',
+    answer: [
+      'Meong',
+      'Guk guk',
+      'Kukuruyuk',
+      'Moo',
+    ],
+    rightAnswer: 'Guk guk',
   },
 ];
 
@@ -268,7 +301,7 @@ export default function QuizDetailView({
     <BackgroundWithSectionLayout>
       <>
         <View style={styles.containerHeader}>
-          <Text style={styles.textInfo}>Pertanyaan {next + 1} dari 2</Text>
+          <Text style={styles.textInfo}>Pertanyaan {next + 1} dari {questionsRandom.length}</Text>
           <Text style={styles.textHeader}>{questionsRandom[next].title}</Text>
         </View>
 
