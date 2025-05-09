@@ -228,18 +228,6 @@ export default function HomeView({
               </View>
             </TouchableOpacity>
           )}
-          {/* <Button
-            onPress={() => {
-              navigation.navigate('About');
-            }}
-            title="Go To About"
-          />
-          <Button
-            onPress={() => {
-              navigation.navigate('Ar');
-            }}
-            title="Go To Ar"
-          /> */}
 
           {/* Modal */}
           <View>
