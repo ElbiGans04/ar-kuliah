@@ -127,7 +127,7 @@ const materi = {
 function Ar(props: any) {
   const {scale, rotateX, rotateY, paramType, imageTracking} = props
     .sceneNavigator.viroAppProps as {
-    paramType: keyof (typeof materi);
+    paramType: keyof typeof materi;
     scale: number;
     rotateY: number;
     rotateX: number;
@@ -140,27 +140,31 @@ function Ar(props: any) {
   });
 
   const model3d = (
-    <Viro3DObject
-      position={
-        imageTracking
-          ? [0, 0, 0]
-          : (selectedMateri.initialValue.position as [number, number, number])
-      }
-      // transformBehaviors={['billboardX']}
-      source={selectedMateri.model}
-      rotation={[rotateX || 0, rotateY || 0, 0]}
-      scale={[scale || 0, scale || 0, scale || 0]}
-      type="OBJ"
-      lightReceivingBitMask={3}
-      shadowCastingBitMask={2}
-      resources={selectedMateri.assets}
-      onLoadEnd={() => {
-        setState({
-          hasARInitialized: true,
-          text: '',
-        });
-      }}
-    />
+    <>
+      {/* AmbientLight agar object menjadi terang */}
+      <ViroAmbientLight color="#FFFFFF" />
+      <Viro3DObject
+        position={
+          imageTracking
+            ? [0, 0, 0]
+            : (selectedMateri.initialValue.position as [number, number, number])
+        }
+        // transformBehaviors={['billboardX']}
+        source={selectedMateri.model}
+        rotation={[rotateX || 0, rotateY || 0, 0]}
+        scale={[scale || 0, scale || 0, scale || 0]}
+        type="OBJ"
+        lightReceivingBitMask={3}
+        shadowCastingBitMask={2}
+        resources={selectedMateri.assets}
+        onLoadEnd={() => {
+          setState({
+            hasARInitialized: true,
+            text: '',
+          });
+        }}
+      />
+    </>
   );
 
   useEffect(() => {
@@ -171,40 +175,41 @@ function Ar(props: any) {
 
   return (
     <ViroARScene>
-      {/* Jika Image Tracking */}
-      {imageTracking && (
-        <ViroARImageMarker target={'logo'}>{model3d}</ViroARImageMarker>
+      {/* Loading Text */}
+      {!state.hasARInitialized && (
+        <ViroSpinner type="light" position={[0, 0, -2]} />
       )}
-      <ViroNode position={[0, 0, -3]} onDrag={() => {}}>
-        {/* Loading Text */}
-        {!state.hasARInitialized && (
-          <ViroSpinner type="light" position={[0, 0, -2]} />
-        )}
-        {/* AmbientLight agar object menjadi terang */}
-        <ViroAmbientLight color="#FFFFFF" />
-        <ViroSpotLight
-          innerAngle={5}
-          outerAngle={25}
-          direction={[0, -1, -0.2]}
-          position={[0, 3, 1]}
-          color="#ffffff"
-          castsShadow={true}
-          shadowMapSize={2048}
-          shadowNearZ={2}
-          shadowFarZ={5}
-          shadowOpacity={0.7}
-        />
+      {/* Jika Image Tracking */}
+      {imageTracking ? (
+        <ViroARImageMarker target={'logo'}>{model3d}</ViroARImageMarker>
+      ) : (
+        <>
+          <ViroNode position={[0, 0, -3]} onDrag={() => {}}>
+            <ViroSpotLight
+              innerAngle={5}
+              outerAngle={25}
+              direction={[0, -1, -0.2]}
+              position={[0, 3, 1]}
+              color="#ffffff"
+              castsShadow={true}
+              shadowMapSize={2048}
+              shadowNearZ={2}
+              shadowFarZ={5}
+              shadowOpacity={0.7}
+            />
 
-        {model3d}
+            {model3d}
 
-        <ViroQuad
-          rotation={[-90, 0, 0]}
-          width={0.5}
-          height={0.5}
-          arShadowReceiver={true}
-          lightReceivingBitMask={2}
-        />
-      </ViroNode>
+            <ViroQuad
+              rotation={[-90, 0, 0]}
+              width={0.5}
+              height={0.5}
+              arShadowReceiver={true}
+              lightReceivingBitMask={2}
+            />
+          </ViroNode>
+        </>
+      )}
     </ViroARScene>
   );
 }
