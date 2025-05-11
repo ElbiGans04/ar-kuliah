@@ -17,7 +17,7 @@ import {ScreenType} from 'routes';
 
 ViroARTrackingTargets.createTargets({
   logo: {
-    source: require('assets/ar/tesla.png'),
+    source: require('assets/ar/global.jpg'),
     orientation: 'Up',
     physicalWidth: 0.125, // real world width in meters
   },
