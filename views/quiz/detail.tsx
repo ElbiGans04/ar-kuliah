@@ -131,7 +131,7 @@ const answer = [
     rightAnswer: 'Untuk menjaga kebersihan tubuhnya',
   },
   {
-    image: require('assets/images/quis/anjing-makan.png'),
+    image: require('assets/images/quis/anjing-makan.jpg'),
     title: 'Anjing suka makan apa?',
     answer: [
       'Cokelat',
