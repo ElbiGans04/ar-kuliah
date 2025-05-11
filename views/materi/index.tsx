@@ -1,4 +1,4 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
 import {Dispatch, SetStateAction, useMemo, useState} from 'react';
 import React, {
@@ -40,7 +40,8 @@ const materi = [
     category: 'Hewan',
     textShow: 'Anjing',
     image: require('assets/images/materi/anjing.jpg'),
-    brief: 'Anjing bisa mencium bau 100.000 kali lebih tajam dari manusia! Wah, kira-kira mereka bisa mencium apa aja, ya?',
+    brief:
+      'Anjing bisa mencium bau 100.000 kali lebih tajam dari manusia! Wah, kira-kira mereka bisa mencium apa aja, ya?',
   },
   {
     key: 'chiken',
@@ -54,7 +55,8 @@ const materi = [
     category: 'Hewan',
     textShow: 'Gajah',
     image: require('assets/images/materi/gajah.jpg'),
-    brief: 'Gajah bisa mengenali dirinya sendiri di cermin! Itu artinya, mereka punya otak yang sangat pintar dan bisa sadar siapa diri mereka. Wah, seperti manusia ya?',
+    brief:
+      'Gajah bisa mengenali dirinya sendiri di cermin! Itu artinya, mereka punya otak yang sangat pintar dan bisa sadar siapa diri mereka. Wah, seperti manusia ya?',
   },
 ] as const;
 
@@ -185,7 +187,8 @@ export default function MateriView({
           .toLowerCase()
           .search(finalSearch.toLowerCase());
         return found !== -1;
-      });
+      })
+      .sort((a, b) => a.textShow.localeCompare(b.textShow));
   }, [finalSearch, tabActive]);
 
   return (
