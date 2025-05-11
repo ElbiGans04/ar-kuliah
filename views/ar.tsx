@@ -127,7 +127,7 @@ const materi = {
 function Ar(props: any) {
   const {scale, rotateX, rotateY, paramType, imageTracking} = props
     .sceneNavigator.viroAppProps as {
-    paramType: 'rusa' | 'kucing' | 'kuda';
+    paramType: keyof (typeof materi);
     scale: number;
     rotateY: number;
     rotateX: number;
