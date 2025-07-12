@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   image: {
     width: 'auto',
     height: 256,
+    objectFit: 'contain',
   },
   containerHeader: {
     gap: 24,
@@ -108,60 +109,149 @@ const styles = StyleSheet.create({
 });
 
 const answer = [
+  // {
+  //   image: require('assets/images/quis/gajah-makan.jpg'),
+  //   title: 'Gajah menggunakan apa untuk mengambil makanan?',
+  //   answer: [
+  //     'Taring',
+  //     'Lidah',
+  //     'Belalai',
+  //     'Hidung biasa',
+  //   ],
+  //   rightAnswer: 'Belalai',
+  // },
+  // {
+  //   image: require('assets/images/quis/kucing-mandi.jpg'),
+  //   title: 'Mengapa kucing sering menjilati tubuhnya sendiri?',
+  //   answer: [
+  //     'Untuk memberi tanda teritorial',
+  //     'Untuk menjaga kebersihan tubuhnya',
+  //     'Untuk menenangkan diri',
+  //     'Untuk mempercepat pertumbuhan bulu',
+  //   ],
+  //   rightAnswer: 'Untuk menjaga kebersihan tubuhnya',
+  // },
+  // {
+  //   image: require('assets/images/quis/anjing-makan.jpg'),
+  //   title: 'Anjing suka makan apa?',
+  //   answer: [
+  //     'Cokelat',
+  //     'Dog food',
+  //     'Es krim',
+  //     'Permen',
+  //   ],
+  //   rightAnswer: 'Dog food',
+  // },
+  // {
+  //   image: require('assets/images/quis/rusa-lari.jpg'),
+  //   title: 'Rusa suka hidup di mana?',
+  //   answer: [
+  //     'Di kolam',
+  //     'Di hutan',
+  //     'Di langit',
+  //     'Di laut',
+  //   ],
+  //   rightAnswer: 'Di hutan',
+  // },
+  // {
+  //   image: require('assets/images/quis/anjing-menggonggong.jpg'),
+  //   title: 'Anjing bersuara seperti apa?',
+  //   answer: [
+  //     'Meong',
+  //     'Guk guk',
+  //     'Kukuruyuk',
+  //     'Moo',
+  //   ],
+  //   rightAnswer: 'Guk guk',
+  // },
   {
-    image: require('assets/images/quis/gajah-makan.jpg'),
-    title: 'Gajah menggunakan apa untuk mengambil makanan?',
-    answer: [
-      'Taring',
-      'Lidah',
-      'Belalai',
-      'Hidung biasa',
-    ],
-    rightAnswer: 'Belalai',
+    image: require('assets/images/quis/dino-1.jpg'),
+    title: 'Hewan apa yang hidup sangat lama dulu dan punya tubuh besar?',
+    answer: ['Gajah', 'Dinosaurus', 'Kucing', 'Burung'],
+    rightAnswer: 'Dinosaurus',
+    type: 'hewan',
   },
   {
-    image: require('assets/images/quis/kucing-mandi.jpg'),
-    title: 'Mengapa kucing sering menjilati tubuhnya sendiri?',
-    answer: [
-      'Untuk memberi tanda teritorial',
-      'Untuk menjaga kebersihan tubuhnya',
-      'Untuk menenangkan diri',
-      'Untuk mempercepat pertumbuhan bulu',
-    ],
-    rightAnswer: 'Untuk menjaga kebersihan tubuhnya',
+    title: 'Dinosaurus makan apa kalau dia pemakan tumbuhan?',
+    answer: ['Batu', 'Roti', 'Daun dan rumput', 'Permen'],
+    rightAnswer: 'Daun dan rumput',
+    type: 'hewan',
+     image: require('assets/images/quis/dino-2.jpg'),
   },
   {
-    image: require('assets/images/quis/anjing-makan.jpg'),
-    title: 'Anjing suka makan apa?',
-    answer: [
-      'Cokelat',
-      'Dog food',
-      'Es krim',
-      'Permen',
-    ],
-    rightAnswer: 'Dog food',
+    title: 'Dinosaurus yang makan daging disebut...?',
+    answer: ['Herbivora', 'Karnivora', 'Pemalu', 'Penari'],
+    rightAnswer: 'Karnivora',
+    type: 'hewan',
+     image: require('assets/images/quis/dino-3.jpg'),
   },
   {
-    image: require('assets/images/quis/rusa-lari.jpg'),
-    title: 'Rusa suka hidup di mana?',
-    answer: [
-      'Di kolam',
-      'Di hutan',
-      'Di langit',
-      'Di laut',
-    ],
-    rightAnswer: 'Di hutan',
+    title: 'Apa yang digunakan dinosaurus untuk berjalan?',
+    answer: ['Sayap', 'Kaki', 'Tanduk', 'Sirip'],
+    rightAnswer: 'Kaki',
+    type: 'hewan',
+     image: require('assets/images/quis/dino-4.jpg'),
   },
   {
-    image: require('assets/images/quis/anjing-menggonggong.jpg'),
-    title: 'Anjing bersuara seperti apa?',
-    answer: [
-      'Meong',
-      'Guk guk',
-      'Kukuruyuk',
-      'Moo',
-    ],
-    rightAnswer: 'Guk guk',
+    title: 'Di mana dinosaurus hidup dulu?',
+    answer: ['Di langit', 'Di laut dalam', 'Di zaman purba', 'Di rumah'],
+    rightAnswer: 'Di zaman purba',
+    type: 'hewan',
+     image: require('assets/images/quis/dino-5.jpg'),
+  },
+  {
+    title: 'Dinosaurus yang besar dan kuat biasanya punya...?',
+    answer: ['Sayap kecil', 'Kaki besar', 'Ekor pendek', 'Topi'],
+    rightAnswer: 'Kaki besar',
+    type: 'hewan',
+     image: require('assets/images/quis/dino-6.jpg'),
+  },
+  {
+    title: 'Dinosaurus bisa mengeluarkan suara seperti...?',
+    answer: ['"Meong"', '"Guk guk"', '"Raaarrr!"', '"Kukuruyuk"'],
+    rightAnswer: '"Raaarrr!"',
+    type: 'hewan',
+     image: require('assets/images/quis/dino-7.jpg'),
+  },
+  {
+    title: 'Apa yang bisa ditemukan dari dinosaurus di tanah?',
+    answer: ['Tulang dan jejak kaki', 'Mobil', 'Batu es', 'Mainan'],
+    rightAnswer: 'Tulang dan jejak kaki',
+    type: 'hewan',
+     image: require('assets/images/quis/dino-8.jpg'),
+  },
+
+  // Buah
+  {
+    image: require('assets/images/quis/apel.jpg'),
+    title: 'Buah apa yang biasanya berwarna merah dan renyah saat digigit?',
+    answer: ['Semangka', 'Pisang', 'Apel', 'Jeruk'],
+    rightAnswer: 'Apel',
+    type: 'buah',
+  },
+  {
+    image: require('assets/images/quis/pisang.jpg'),
+    title:
+      'Buah apa yang berwarna kuning dan punya kulit yang bisa dikupas dengan tangan?',
+    answer: ['Apel', 'Pisang', 'Jeruk', 'Strawberry'],
+    rightAnswer: 'Pisang',
+    type: 'buah',
+  },
+  {
+    image: require('assets/images/quis/semangka.jpg'),
+    title:
+      'Buah apa yang besar, bulat, berwarna hijau di luar dan merah di dalam?',
+    answer: ['Pisang', 'Jeruk', 'Semangka', 'Apel'],
+    rightAnswer: 'Semangka',
+    type: 'buah',
+  },
+  {
+    image: require('assets/images/quis/semangka.jpg'),
+    title:
+      'Buah apa yang rasanya manis dan segar, sering dimakan saat cuaca panas?',
+    answer: ['Pisang', 'Semangka', 'Apel', 'Jeruk'],
+    rightAnswer: 'Semangka',
+    type: 'buah',
   },
 ];
 
@@ -177,6 +267,7 @@ function RandomArray(source: any[]) {
 
 export default function QuizDetailView({
   navigation,
+  route,
 }: NativeStackScreenProps<ScreenType, 'QuizDetail'>) {
   const [next, setNext] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -187,6 +278,7 @@ export default function QuizDetailView({
   const [allowBack, setAllowBack] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
   const [appReady, setAppReady] = useState(false);
+  const paramType = route.params.type;
 
   function PlayMusic() {
     try {
@@ -240,13 +332,13 @@ export default function QuizDetailView({
 
   // Random Quistion
   const questionsRandom = useMemo(() => {
-    const random = RandomArray(answer);
+    const random = RandomArray(answer.filter(val => val.type === paramType));
     return random.map((val: (typeof answer)[0]) => {
       const newVal = {...val};
       newVal.answer = RandomArray(newVal.answer);
       return newVal;
     });
-  }, []);
+  }, [paramType]);
 
   // Check Answer
   useEffect(() => {
@@ -301,8 +393,10 @@ export default function QuizDetailView({
     <BackgroundWithSectionLayout>
       <>
         <View style={styles.containerHeader}>
-          <Text style={styles.textInfo}>Pertanyaan {next + 1} dari {questionsRandom.length}</Text>
-          <Text style={styles.textHeader}>{questionsRandom[next].title}</Text>
+          <Text style={styles.textInfo}>
+            Pertanyaan {next + 1} dari {questionsRandom.length}
+          </Text>
+          <Text style={styles.textHeader}>{questionsRandom[next]?.title}</Text>
         </View>
 
         <View>
@@ -395,7 +489,7 @@ export default function QuizDetailView({
                     });
 
                     // Prevent ketika sudah tidak ada soal lagi
-                    if (next !== answer.length - 1) {
+                    if (next !== questionsRandom.length - 1) {
                       setNext(nextIndex => nextIndex + 1);
                     }
                   }}>

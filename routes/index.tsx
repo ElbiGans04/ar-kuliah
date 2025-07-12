@@ -16,13 +16,39 @@ export type ScreenType = {
   About: undefined;
   Help: undefined;
   Quiz: undefined;
-  QuizDetail: undefined;
+  QuizDetail: {
+    type: 'buah' | 'hewan';
+  };
   Materi: undefined;
   MateriDetail: {
-    type: 'rusa' | 'kucing' | 'kuda' | 'dog' | 'chiken' | 'elephant';
+    type:
+      | 'rusa'
+      | 'kucing'
+      | 'kuda'
+      | 'dog'
+      | 'chiken'
+      | 'elephant'
+      | 'trex'
+      | 'quetzalcoatlus'
+      | 'dilophosaurus'
+      | 'velociraptor'
+      | 'chirostenotes'
+      | 'introduction';
   };
   Ar: {
-    type: 'rusa' | 'kucing' | 'kuda' | 'dog' | 'chiken' | 'elephant';
+    type:
+      | 'rusa'
+      | 'kucing'
+      | 'kuda'
+      | 'dog'
+      | 'chiken'
+      | 'elephant'
+      | 'trex'
+      | 'quetzalcoatlus'
+      | 'dilophosaurus'
+      | 'velociraptor'
+      | 'chirostenotes'
+      | 'introduction';
     imageTracking: boolean;
   };
 };

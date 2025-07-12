@@ -13,50 +13,58 @@ import React, {
 import {ScreenType} from 'routes';
 
 const materi = [
+  // {
+  //   key: 'kucing',
+  //   category: 'Hewan',
+  //   textShow: 'Kucing',
+  //   image: require('assets/images/materi/amber-kipp-75715CVEJhI-unsplash.jpg'),
+  //   brief:
+  //     'Kucing bisa tidur sampai 16 jam sehari. Wah, kamu bisa nggak ya kayak kucing?',
+  // },
+  // {
+  //   key: 'kuda',
+  //   category: 'Hewan',
+  //   textShow: 'Kuda',
+  //   image: require('assets/images/materi/sinitta-leunen-nUl8Iz_EAkE-unsplash.jpg'),
+  //   brief: 'Kuda bisa mengenali suara temannya dari jauh! Hebat, ya?',
+  // },
+  // {
+  //   key: 'rusa',
+  //   category: 'Hewan',
+  //   textShow: 'Rusa',
+  //   image: require('assets/images/materi/didin-hasbullah-piNiZmg-wlc-unsplash.jpg'),
+  //   brief: 'Rusa bisa menumbuhkan tanduk baru setiap tahun. Kok bisa, ya?',
+  // },
+  // {
+  //   key: 'dog',
+  //   category: 'Hewan',
+  //   textShow: 'Anjing',
+  //   image: require('assets/images/materi/anjing.jpg'),
+  //   brief:
+  //     'Anjing bisa mencium bau 100.000 kali lebih tajam dari manusia! Wah, kira-kira mereka bisa mencium apa aja, ya?',
+  // },
+  // {
+  //   key: 'chiken',
+  //   category: 'Hewan',
+  //   textShow: 'Ayam',
+  //   image: require('assets/images/materi/ayam.jpg'),
+  //   brief: 'Tahukah kamu? Ayam bisa mengingat lebih dari 100 wajah ayam lain!',
+  // },
+  // {
+  //   key: 'elephant',
+  //   category: 'Hewan',
+  //   textShow: 'Gajah',
+  //   image: require('assets/images/materi/gajah.jpg'),
+  //   brief:
+  //     'Gajah bisa mengenali dirinya sendiri di cermin! Itu artinya, mereka punya otak yang sangat pintar dan bisa sadar siapa diri mereka. Wah, seperti manusia ya?',
+  // },
   {
-    key: 'kucing',
+    key: 'introduction',
     category: 'Hewan',
-    textShow: 'Kucing',
-    image: require('assets/images/materi/amber-kipp-75715CVEJhI-unsplash.jpg'),
+    textShow: 'Dinosaurus: Pengenalan',
+    image: require('assets/images/materi/tirex.jpg'),
     brief:
-      'Kucing bisa tidur sampai 16 jam sehari. Wah, kamu bisa nggak ya kayak kucing?',
-  },
-  {
-    key: 'kuda',
-    category: 'Hewan',
-    textShow: 'Kuda',
-    image: require('assets/images/materi/sinitta-leunen-nUl8Iz_EAkE-unsplash.jpg'),
-    brief: 'Kuda bisa mengenali suara temannya dari jauh! Hebat, ya?',
-  },
-  {
-    key: 'rusa',
-    category: 'Hewan',
-    textShow: 'Rusa',
-    image: require('assets/images/materi/didin-hasbullah-piNiZmg-wlc-unsplash.jpg'),
-    brief: 'Rusa bisa menumbuhkan tanduk baru setiap tahun. Kok bisa, ya?',
-  },
-  {
-    key: 'dog',
-    category: 'Hewan',
-    textShow: 'Anjing',
-    image: require('assets/images/materi/anjing.jpg'),
-    brief:
-      'Anjing bisa mencium bau 100.000 kali lebih tajam dari manusia! Wah, kira-kira mereka bisa mencium apa aja, ya?',
-  },
-  {
-    key: 'chiken',
-    category: 'Hewan',
-    textShow: 'Ayam',
-    image: require('assets/images/materi/ayam.jpg'),
-    brief: 'Tahukah kamu? Ayam bisa mengingat lebih dari 100 wajah ayam lain!',
-  },
-  {
-    key: 'elephant',
-    category: 'Hewan',
-    textShow: 'Gajah',
-    image: require('assets/images/materi/gajah.jpg'),
-    brief:
-      'Gajah bisa mengenali dirinya sendiri di cermin! Itu artinya, mereka punya otak yang sangat pintar dan bisa sadar siapa diri mereka. Wah, seperti manusia ya?',
+      'Pengenalan akan Dinosaurus',
   },
 ] as const;
 
@@ -117,6 +125,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     overflow: 'hidden',
     borderRadius: 10,
+
+    // Hide 
+    display: 'none',
   },
   tabItemTouchable: {
     flexGrow: 1,
@@ -158,6 +169,7 @@ const styles = StyleSheet.create({
   itemImage: {
     width: 'auto',
     height: 255,
+    objectFit: 'contain'
   },
   itemContainerText: {
     marginTop: 10,

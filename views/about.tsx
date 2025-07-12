@@ -7,12 +7,19 @@ const styles = StyleSheet.create({
   textHeader: {
     fontSize: 20,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   containerText: {
     gap: 10,
   },
   textBold: {
     fontWeight: 'bold',
+  },
+  textJustify: {
+    textAlign: 'justify',
+  },
+  textCenter: {
+    textAlign: 'center',
   },
 });
 
@@ -22,11 +29,11 @@ export default function AboutView() {
   return (
     <BackgroundWithSectionLayout>
       <>
-        <Text>
+        <Text style={styles.textJustify}>
           Selamat datang di {appInfo.appNameLong || '-'} yang membawa pengalaman
           belajar ke level baru!
         </Text>
-        <Text>
+        <Text style={styles.textJustify}>
           Aplikasi ini dirancang sebagai media pembelajaran interaktif berbasis
           Augmented Reality (AR) untuk membantu anak-anak mengenal berbagai
           materi seperti organ tubuh manusia, hewan, warna, angka, dan lainnya
@@ -36,49 +43,49 @@ export default function AboutView() {
           menarik.
         </Text>
         <View style={styles.containerText}>
-          <Text style={styles.textHeader}>Tujuan Aplikasi:</Text>
-          <Text>
+          <Text style={styles.textHeader}>Tujuan Aplikasi</Text>
+          <Text style={styles.textCenter}>
             📌 Meningkatkan interaksi dalam pembelajaran melalui penggunaan
             teknologi digital.
           </Text>
-          <Text>
+          <Text style={styles.textCenter}>
             📌 Memanfaatkan Augmented Reality (AR) untuk memberikan pengalaman
             belajar yang lebih mendalam.
           </Text>
-          <Text>
+          <Text style={styles.textCenter}>
             📌 Membantu siswa memahami materi lebih baik dengan model 3D yang
             dapat diakses secara langsung.
           </Text>
-          <Text>
+          <Text style={styles.textCenter}>
             📌 Menyediakan alternatif pembelajaran modern yang fleksibel dan
             mudah diakses kapan saja.
           </Text>
         </View>
         <View style={styles.containerText}>
-          <Text style={styles.textHeader}>Fitur Utama Aplikasi:</Text>
-          <Text>
+          <Text style={styles.textHeader}>Fitur Utama Aplikasi</Text>
+          <Text style={styles.textCenter}>
             ✅ Pembelajaran Digital – Materi tersedia dalam bentuk digital yang
             mudah diakses kapan saja.
           </Text>
-          <Text>
+          <Text style={styles.textCenter}>
             ✅ Augmented Reality (AR) – Menampilkan model 3D untuk pengalaman
             belajar yang lebih nyata.
           </Text>
-          <Text>
+          <Text style={styles.textCenter}>
             ✅ Interaktif & Menarik – Memberikan pengalaman belajar yang lebih
             menyenangkan dan efektif.
           </Text>
         </View>
-        <Text style={styles.textBold}>
+        <Text style={{...styles.textBold, ...styles.textCenter}}>
           🌟 Versi Saat Ini: {appInfo.appVersionNumber || '-'}
         </Text>
-        <Text>
+        <Text style={styles.textJustify}>
           Dengan Aplikasi ini, belajar menjadi lebih hidup, menyenangkan, dan
           mudah dipahami. Ayo mulai jelajahi dunia pengetahuan dengan teknologi
           terbaru! 🚀
         </Text>
-        <Text>
-          Dibuat dengan ❤️ oleh{' '}
+        <Text style={styles.textJustify}>
+          Created By{' '}
           <Text style={styles.textBold}>
             Rhafael Bijaksana dan Muhammmad Ikmal Akbar{' '}
           </Text>

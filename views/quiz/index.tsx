@@ -50,11 +50,28 @@ export default function QuizView({
   return (
     <BackgroundWithSectionLayout>
       <>
-        <Text style={styles.textHeader}>PILIH KATEGORI QUIZ</Text>
+        <Text style={styles.textHeader}>PILIH QUIZ</Text>
         <View style={styles.containerItem}>
+          {/* <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('QuizDetail', {
+                type: 'buah',
+              });
+            }}
+            style={styles.item}>
+            <View>
+              <Image
+                style={styles.itemImage}
+                source={require('assets/images/quis/buah-buah.jpg')}
+              />
+              <Text style={styles.itemText}>Buah</Text>
+            </View>
+          </TouchableOpacity> */}
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('QuizDetail');
+              navigation.navigate('QuizDetail', {
+                type: 'hewan',
+              });
             }}
             style={styles.item}>
             <View>
@@ -62,7 +79,7 @@ export default function QuizView({
                 style={styles.itemImage}
                 source={require('assets/images/quis/bg-icon-hewan.jpg')}
               />
-              <Text style={styles.itemText}>HEWAN</Text>
+              <Text style={styles.itemText}>Dino V1</Text>
             </View>
           </TouchableOpacity>
         </View>
