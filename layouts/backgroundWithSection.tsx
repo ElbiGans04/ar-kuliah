@@ -46,16 +46,18 @@ export default function BackgroundWithSectionLayout({
   children: React.ReactElement;
 }) {
   return (
-    <ScrollView style={styles.scrollViewContainer}>
-      <View style={styles.parentContainer}>
-        <View style={styles.containerBackground}>
-          <Image
-            style={styles.containerBackgroundImage}
-            source={require('assets/images/bg.png')}
-          />
-        </View>
-        <View style={styles.container}>{children}</View>
+    // <ScrollView style={styles.scrollViewContainer}>
+    <View style={styles.parentContainer}>
+      <View style={styles.containerBackground}>
+        <Image
+          style={styles.containerBackgroundImage}
+          source={require('assets/images/bg.png')}
+        />
       </View>
-    </ScrollView>
+      <ScrollView>
+        <View style={styles.container}>{children}</View>
+      </ScrollView>
+    </View>
+    // </ScrollView>
   );
 }
