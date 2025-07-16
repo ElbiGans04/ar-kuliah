@@ -82,6 +82,21 @@ export default function QuizView({
               <Text style={styles.itemText}>Dino V1</Text>
             </View>
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('QuizDetail', {
+                type: 'dino2',
+              });
+            }}
+            style={styles.item}>
+            <View>
+              <Image
+                style={styles.itemImage}
+                source={require('assets/images/quis/bg-icon-hewan.jpg')}
+              />
+              <Text style={styles.itemText}>Dino V2</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </>
     </BackgroundWithSectionLayout>

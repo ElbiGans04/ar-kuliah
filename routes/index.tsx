@@ -17,38 +17,40 @@ export type ScreenType = {
   Help: undefined;
   Quiz: undefined;
   QuizDetail: {
-    type: 'buah' | 'hewan';
+    type: 'buah' | 'hewan' | 'dino2';
   };
   Materi: undefined;
   MateriDetail: {
     type:
-      | 'rusa'
-      | 'kucing'
-      | 'kuda'
-      | 'dog'
-      | 'chiken'
-      | 'elephant'
+      // | 'rusa'
+      // | 'kucing'
+      // | 'kuda'
+      // | 'dog'
+      // | 'chiken'
+      // | 'elephant'
       | 'trex'
       | 'quetzalcoatlus'
       | 'dilophosaurus'
       | 'velociraptor'
       | 'chirostenotes'
-      | 'introduction';
+      | 'introduction'
+      | 'type';
   };
   Ar: {
     type:
-      | 'rusa'
-      | 'kucing'
-      | 'kuda'
-      | 'dog'
-      | 'chiken'
-      | 'elephant'
+      // | 'rusa'
+      // | 'kucing'
+      // | 'kuda'
+      // | 'dog'
+      // | 'chiken'
+      // | 'elephant'
       | 'trex'
       | 'quetzalcoatlus'
       | 'dilophosaurus'
       | 'velociraptor'
       | 'chirostenotes'
-      | 'introduction';
+      // | 'introduction'
+      // | 'type';
     imageTracking: boolean;
   };
 };

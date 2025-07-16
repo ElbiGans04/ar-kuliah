@@ -59,12 +59,53 @@ const materi = [
   //     'Gajah bisa mengenali dirinya sendiri di cermin! Itu artinya, mereka punya otak yang sangat pintar dan bisa sadar siapa diri mereka. Wah, seperti manusia ya?',
   // },
   {
+    key: 'chirostenotes',
+    category: 'Hewan',
+    textShow: 'Chirostenotes: Si Tangan Aneh dari Zaman Dinosaurus',
+    image: require('assets/images/materi/chirostenotes.jpg'),
+    brief: 'Dinosaurus bertangan panjang dengan jari unik',
+  },
+  {
+    key: 'dilophosaurus',
+    category: 'Hewan',
+    textShow: 'Dilophosaurus: Dinosaurus dengan Jambul Unik',
+    image: require('assets/images/materi/dilophosaurus.jpg'),
+    brief: 'Dinosaurus berkepala dua jambul yang suka berburu',
+  },
+  {
+    key: 'quetzalcoatlus',
+    category: 'Hewan',
+    textShow: 'Quetzalcoatlus: Penguasa Langit Zaman Dinosaurus',
+    image: require('assets/images/materi/dino-burung.jpg'),
+    brief: 'Reptil terbang raksasa yang bisa melayang di langit purba',
+  },
+  {
+    key: 'trex',
+    category: 'Hewan',
+    textShow: 'T. rex: Si Raja Dinosaurus',
+    image: require('assets/images/materi/tirex.jpg'),
+    brief: 'Dinosaurus besar pemakan daging dengan rahang super kuat',
+  },
+  {
+    key: 'velociraptor',
+    category: 'Hewan',
+    textShow: 'Velociraptor: Dinosaurus Kecil yang Gesit',
+    image: require('assets/images/materi/velociraptor.jpg'),
+    brief: 'Dinosaurus kecil dan cepat dengan cakar tajam',
+  },
+  {
     key: 'introduction',
     category: 'Hewan',
     textShow: 'Dinosaurus: Pengenalan',
-    image: require('assets/images/materi/tirex.jpg'),
-    brief:
-      'Pengenalan akan Dinosaurus',
+    image: require('assets/images/materi/introduction.jpg'),
+    brief: 'Pengenalan akan Dinosaurus',
+  },
+  {
+    key: 'type',
+    category: 'Hewan',
+    textShow: 'Dinosaurus: Ada jenis apa aja ya ?',
+    image: require('assets/images/materi/jenis-dino.jpg'),
+    brief: 'Jenis-Jenis Dinosaurus',
   },
 ] as const;
 
@@ -126,7 +167,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderRadius: 10,
 
-    // Hide 
+    // Hide
     display: 'none',
   },
   tabItemTouchable: {
@@ -169,7 +210,7 @@ const styles = StyleSheet.create({
   itemImage: {
     width: 'auto',
     height: 255,
-    objectFit: 'contain'
+    objectFit: 'contain',
   },
   itemContainerText: {
     marginTop: 10,

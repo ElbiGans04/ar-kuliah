@@ -1,0 +1,54 @@
+# Blender 4.3.2 MTL File: 'toy_dinosaur.blend'
+# www.blender.org
+
+newmtl Material.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.073248 0.015341 0.018432
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl Material.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800149 0.689846 0.335004
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl Material_002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd dinosaur_textures/Material.002_BaseColor.png
+map_Bump -bm 1.000000 dinosaur_textures/Material.002_Normal.png
+
+newmtl Tiny_Iris_1.3_(Cat_Hazel_Constricted)
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl Tiny_Sclera_1.3_(Cat_Hazel_Constricted)
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.376000
+d 1.000000
+illum 2
+map_Kd dinosaur_eyes/TinyEye_Sclera_4096_basecolor.png
+map_Ns dinosaur_eyes/TinyEye_Sclera_4096_roughness.png
+map_Bump -bm 1.000000 dinosaur_eyes/TinyEye_Sclera_4096_normal.png

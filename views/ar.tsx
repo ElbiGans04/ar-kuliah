@@ -2,10 +2,8 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {
   Viro3DObject,
   ViroAmbientLight,
-  ViroARImageMarker,
   ViroARScene,
   ViroARSceneNavigator,
-  ViroARTrackingTargets,
   ViroNode,
   ViroQuad,
   ViroSpinner,
@@ -15,123 +13,82 @@ import React, {useEffect, useState} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 import {ScreenType} from 'routes';
 
-ViroARTrackingTargets.createTargets({
-  logo: {
-    source: require('assets/ar/global.jpg'),
-    orientation: 'Up',
-    physicalWidth: 0.125, // real world width in meters
-  },
-});
-
 function get10Percent(value: number): number {
   return (value * 10) / 100;
 }
 
 const materi = {
-  kucing: {
-    model: require('assets/ar/cat/12221_Cat_v1_l3_obj.obj'),
+  chirostenotes: {
+    model: require('assets/ar/chirostenotes/13632_Chirostenotes_v1_L2.obj'),
     assets: [
-      require('assets/ar/cat/12221_Cat_v1_l3.mtl'),
-      require('assets/ar/cat/Cat_bump.jpg'),
-    ],
-    initialValue: {
-      scale: 0.04,
-      scaleImageRecognition: 0.004,
-      rotateX: -90,
-      rotateY: 50,
-      position: [0, -2, 0],
-    },
-  },
-  rusa: {
-    model: require('assets/ar/dear/12961_White-Tailed_Deer_v1_l2_obj.obj'),
-    assets: [
-      require('assets/ar/dear/12961_White-Tailed_Deer_v1_l2.mtl'),
-      require('assets/ar/dear/12961_White-TailedDeer_diffuse.jpg'),
+      require('assets/ar/chirostenotes/13632_Chirostenotes_v1_L2-mtl.mtl'),
+      // require('assets/ar/deinonychus/Deinonychus-images.jpg'),
     ],
     initialValue: {
       scale: 0.05,
-      scaleImageRecognition: 0.004,
-      rotateX: -90,
-      rotateY: -60,
-      position: [0, -2, 0],
-    },
-  },
-  kuda: {
-    model: require('assets/ar/horse/10026_Horse_v01-it2_obj.obj'),
-    assets: [
-      require('assets/ar/horse/10026_Horse_v01-it2.mtl'),
-      require('assets/ar/horse/Horse_v01.jpg'),
-    ],
-    initialValue: {
-      scale: 0.0015,
-      scaleImageRecognition: 0.0001,
-      rotateX: -90,
-      rotateY: 50,
+      rotateX: -100,
+      rotateY: -460,
       position: [0, -3, 0],
     },
   },
-  dog: {
-    model: require('assets/ar/dog/13041_Beagle_v1_L1_obj.obj'),
+  dilophosaurus: {
+    model: require('assets/ar/dilophosaurus/dilophosaurus.obj'),
     assets: [
-      require('assets/ar/dog/13041_Beagle_v1_L1.mtl'),
-      require('assets/ar/dog/13041_Beagle_diffuse.jpg'),
-    ],
-    initialValue: {
-      scale: 0.03,
-      scaleImageRecognition: 0.002,
-      rotateX: -90,
-      rotateY: 50,
-      position: [0, -3, 0],
-    },
-  },
-  chiken: {
-    model: require('assets/ar/chiken/chiken.obj'),
-    assets: [
-      require('assets/ar/chiken/uploads_files_5014710_Hen_Low_Poly.mtl'),
-      require('assets/ar/chiken/Hen_Quad_Diffuse.png'),
-      require('assets/ar/chiken/Hen_Quad_Normal.png'),
-      require('assets/ar/chiken/Hen_Quad_Roughness.png'),
-      require('assets/ar/chiken/Hen_Tris_Diffuse.png'),
-      require('assets/ar/chiken/Hen_Tris_Normal.png'),
-      require('assets/ar/chiken/Hen_Tris_Roughness.png'),
-    ],
-    initialValue: {
-      scale: 5,
-      scaleImageRecognition: 0.25,
-      rotateX: 0,
-      rotateY: -40,
-      position: [0, -3, 0],
-    },
-  },
-  elephant: {
-    model: require('assets/ar/elephant/gajah.obj'),
-    assets: [
-      require('assets/ar/elephant/uploads_files_5014756_Elephant_Low_Poly.mtl'),
-      require('assets/ar/elephant/Elephant_Quad_Diffuse.png'),
-      require('assets/ar/elephant/Elephant_Quad_Normal.png'),
-      require('assets/ar/elephant/Elephant_Quad_Roughness.png'),
-      require('assets/ar/elephant/Elephant_Tris_Diffuse.png'),
-      require('assets/ar/elephant/Elephant_Tris_Normal.png'),
-      require('assets/ar/elephant/Elephant_Tris_Roughness.png'),
+      require('assets/ar/dilophosaurus/dilophosaurus-mtl.mtl'),
     ],
     initialValue: {
       scale: 0.81,
-      scaleImageRecognition: 0.04,
       rotateX: 0,
-      rotateY: -40,
+      rotateY: -100,
+      position: [0, -3, -2],
+    },
+  },
+  quetzalcoatlus: {
+    model: require('assets/ar/quetzalcoatlus/13623_Quetzalcoatlus_v1_L2.obj'),
+    assets: [
+      require('assets/ar/quetzalcoatlus/13623_Quetzalcoatlus_v1_L2-mtl.mtl'),
+      require('assets/ar/quetzalcoatlus/13623_Quetzalcoatlus.jpg'),
+    ],
+    initialValue: {
+      scale: 0.0131,
+      rotateX: -100,
+      rotateY: -100,
+      position: [0, -3, -1],
+    },
+  },
+  trex: {
+    model: require('assets/ar/trex/trex.obj'),
+    assets: [
+      require('assets/ar/trex/trex-mtl.mtl'),
+    ],
+    initialValue: {
+      scale: 0.11,
+      rotateX: -370,
+      rotateY: 90,
+      position: [0, -3, 0],
+    },
+  },
+  velociraptor: {
+    model: require('assets/ar/velociraptor/toy_dinosaur.obj'),
+    assets: [
+      require('assets/ar/velociraptor/toy_dinosaur-mtl.mtl'),
+    ],
+    initialValue: {
+      scale: 0.41,
+      rotateX: -10,
+      rotateY: -100,
       position: [0, -3, 0],
     },
   },
 };
 
 function Ar(props: any) {
-  const {scale, rotateX, rotateY, paramType, imageTracking} = props
-    .sceneNavigator.viroAppProps as {
+  const {scale, rotateX, rotateY, paramType} = props.sceneNavigator
+    .viroAppProps as {
     paramType: keyof typeof materi;
     scale: number;
     rotateY: number;
     rotateX: number;
-    imageTracking: boolean;
   };
   const selectedMateri = materi[paramType];
   const [state, setState] = useState({
@@ -145,9 +102,7 @@ function Ar(props: any) {
       <ViroAmbientLight color="#FFFFFF" />
       <Viro3DObject
         position={
-          imageTracking
-            ? [0, 0, 0]
-            : (selectedMateri.initialValue.position as [number, number, number])
+          selectedMateri.initialValue.position as [number, number, number]
         }
         // transformBehaviors={['billboardX']}
         source={selectedMateri.model}
@@ -157,6 +112,12 @@ function Ar(props: any) {
         lightReceivingBitMask={3}
         shadowCastingBitMask={2}
         resources={selectedMateri.assets}
+        onLoadStart={() => {
+          console.log('Load Start');
+        }}
+        onError={() => {
+          console.log('Load Failed');
+        }}
         onLoadEnd={() => {
           setState({
             hasARInitialized: true,
@@ -180,36 +141,30 @@ function Ar(props: any) {
         <ViroSpinner type="light" position={[0, 0, -2]} />
       )}
       {/* Jika Image Tracking */}
-      {imageTracking ? (
-        <ViroARImageMarker target={'logo'}>{model3d}</ViroARImageMarker>
-      ) : (
-        <>
-          <ViroNode position={[0, 0, -3]} onDrag={() => {}}>
-            <ViroSpotLight
-              innerAngle={5}
-              outerAngle={25}
-              direction={[0, -1, -0.2]}
-              position={[0, 3, 1]}
-              color="#ffffff"
-              castsShadow={true}
-              shadowMapSize={2048}
-              shadowNearZ={2}
-              shadowFarZ={5}
-              shadowOpacity={0.7}
-            />
+      <ViroNode position={[0, 0, -3]} onDrag={() => {}}>
+        <ViroSpotLight
+          innerAngle={5}
+          outerAngle={25}
+          direction={[0, -1, -0.2]}
+          position={[0, 3, 1]}
+          color="#ffffff"
+          castsShadow={true}
+          shadowMapSize={2048}
+          shadowNearZ={2}
+          shadowFarZ={5}
+          shadowOpacity={0.7}
+        />
 
-            {model3d}
+        {model3d}
 
-            <ViroQuad
-              rotation={[-90, 0, 0]}
-              width={0.5}
-              height={0.5}
-              arShadowReceiver={true}
-              lightReceivingBitMask={2}
-            />
-          </ViroNode>
-        </>
-      )}
+        <ViroQuad
+          rotation={[-90, 0, 0]}
+          width={0.5}
+          height={0.5}
+          arShadowReceiver={true}
+          lightReceivingBitMask={2}
+        />
+      </ViroNode>
     </ViroARScene>
   );
 }
@@ -219,9 +174,7 @@ export default function ArView({
 }: NativeStackScreenProps<ScreenType, 'Ar'>) {
   const paramType = route.params.type;
   const selected = materi[paramType];
-  const scaleValue = route.params.imageTracking
-    ? selected.initialValue.scaleImageRecognition
-    : selected.initialValue.scale;
+  const scaleValue = selected.initialValue.scale;
   const [scale, setScale] = useState(scaleValue);
   const [rotateX, setRotateX] = useState(selected.initialValue.rotateX);
   const [rotateY, setRotateY] = useState(selected.initialValue.rotateY);

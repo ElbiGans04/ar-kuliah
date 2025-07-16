@@ -1,5 +1,8 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {useIsDeviceSupportAR} from 'hooks';
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps
+} from '@react-navigation/native-stack';
+import { useIsDeviceSupportAR } from 'hooks';
 import BackgroundWithSectionLayout from 'layouts/backgroundWithSection';
 import React, {
   Image,
@@ -9,7 +12,7 @@ import React, {
   TouchableHighlight,
   View,
 } from 'react-native';
-import {ScreenType} from 'routes';
+import { ScreenType } from 'routes';
 
 const styles = StyleSheet.create({
   textHeader: {
@@ -30,6 +33,7 @@ const styles = StyleSheet.create({
   image: {
     width: 'auto',
     height: 300,
+    objectFit: 'contain',
   },
   touchableButtonStyle: {
     overflow: 'hidden',
@@ -58,6 +62,7 @@ interface MateriType {
       head?: string;
       body: string[];
       image?: ImageSourcePropType;
+      redirectButton?: string;
     }[];
   };
 }
@@ -259,7 +264,6 @@ const materi: MateriType = {
         ],
       },
       {
-        image: require('assets/images/materi/tirex-tinggi.jpg'),
         head: 'Ciri-ciri Quetzalcoatlus : ',
         body: [
           `Tubuhnya ringan agar bisa terbang`,
@@ -327,7 +331,7 @@ const materi: MateriType = {
     ],
   },
   introduction: {
-    image: require('assets/images/materi/chirostenotes.jpg'),
+    image: require('assets/images/materi/foto1.jpg'),
     content: [
       {
         head: 'Kenalan dengan Dinosaurus!',
@@ -338,6 +342,7 @@ const materi: MateriType = {
         ],
       },
       {
+        image: require('assets/images/materi/foto2.jpg'),
         head: 'Bentuk dan Jenis Dinosaurus',
         body: [
           'Dinosaurus adalah hewan yang sangat beragam.',
@@ -347,6 +352,7 @@ const materi: MateriType = {
         ],
       },
       {
+        image: require('assets/images/materi/foto3.jpg'),
         head: 'Dinosaurus Pemakan Tumbuhan',
         body: [
           'Tahukah kamu? Dinosaurus ada yang suka makan tumbuhan.',
@@ -355,6 +361,7 @@ const materi: MateriType = {
         ],
       },
       {
+        image: require('assets/images/materi/foto4.jpg'),
         head: 'Dinosaurus Pemakan Daging',
         body: [
           'Tidak semua dinosaurus makan tumbuhan, lho.',
@@ -364,6 +371,7 @@ const materi: MateriType = {
         ],
       },
       {
+        image: require('assets/images/materi/foto5.jpg'),
         head: 'Bagian Tubuh untuk Berjalan',
         body: [
           'Kalau berjalan, dinosaurus tidak pakai sayap atau sirip.',
@@ -388,6 +396,7 @@ const materi: MateriType = {
         ],
       },
       {
+        image: require('assets/images/materi/dino-8.png'),
         head: 'Jejak dan Tulang Dinosaurus',
         body: [
           'Walaupun dinosaurus sudah tidak hidup sekarang, para ilmuwan bisa menemukan tulang dan jejak kaki mereka yang tertinggal di tanah.',
@@ -414,7 +423,93 @@ const materi: MateriType = {
       },
     ],
   },
-};
+  type: {
+    image: require('assets/images/materi/dino-1.jpg'),
+    content: [
+      {
+        head: 'Jenis-Jenis Dinosaurus',
+        body: [
+          'Halo teman-teman! Hari ini kita akan mengenal lebih banyak tentang dinosaurus.',
+          'Ternyata, dinosaurus itu tidak hanya satu jenis saja, lho!',
+          'Ada dinosaurus yang besar dan tinggi seperti menara, ada juga yang kecil dan lincah seperti burung.',
+          'Beberapa dinosaurus suka makan daun dan buah-buahan, mereka disebut herbivora.',
+          'Tapi ada juga yang suka makan daging, mereka disebut karnivora.',
+          'Masing-masing punya bentuk tubuh, cara hidup, dan keunikan yang berbeda-beda.',
+          'Yuk, kita pelajari satu per satu jenis dinosaurus yang menarik dan seru!',
+        ],
+      },
+      {
+        image: require('assets/images/materi/chirostenotes.jpg'),
+        head: 'Chirostenotes',
+        body: [
+          'Chirostenotes adalah dinosaurus yang mirip burung, dengan tubuh ramping dan tangan panjang seperti cakar.',
+          'Namanya berarti “tangan sempit” karena bentuk tangannya yang unik dan panjang.',
+          'Dinosaurus ini berjalan dengan dua kaki dan kemungkinan bisa bergerak dengan cepat.',
+          'Chirostenotes tidak memiliki gigi, tetapi punya paruh seperti burung.',
+          'Para ilmuwan percaya bahwa makanannya mungkin buah-buahan, serangga, dan telur.',
+          'Dengan leher panjang dan bentuk tubuhnya yang ringan, Chirostenotes adalah dinosaurus yang sangat menarik! 🦖',
+        ],
+        redirectButton: 'chirostenotes',
+      },
+      {
+        image: require('assets/images/materi/dilophosaurus.jpg'),
+        head: 'Dilophosaurus',
+        body: [
+          'Dilophosaurus adalah dinosaurus yang berjalan dengan dua kaki dan hidup sangat lama di zaman purba.',
+          'Namanya berarti “kadal berjambul dua” karena ia punya dua jambul di atas kepalanya.',
+          'Dilophosaurus adalah pemakan daging, jadi termasuk dinosaurus karnivora.',
+          'Tubuhnya ramping dan bisa berlari dengan cepat untuk mengejar mangsa.',
+          'Ia tidak sebesar T-rex, tapi tetap tangguh dan lincah.',
+          'Beberapa film menggambarkannya bisa menyemburkan racun, tapi itu belum terbukti secara ilmiah.',
+          'Dilophosaurus terlihat unik dan berbeda karena jambulnya yang khas di kepala! 🦕',
+        ],
+        redirectButton: 'dilophosaurus',
+      },
+      {
+        image: require('assets/images/materi/dino-burung.jpg'),
+        head: 'Quetzalcoatlus',
+        body: [
+          'Quetzalcoatlus adalah salah satu hewan terbang terbesar yang pernah hidup di zaman dinosaurus!',
+          'Walaupun sering dianggap dinosaurus, Quetzalcoatlus sebenarnya adalah sejenis pterosaurus, yaitu reptil terbang.',
+          'Sayapnya sangat lebar, bahkan bisa sepanjang bus besar!',
+          'Quetzalcoatlus punya leher yang panjang dan paruh yang besar tanpa gigi.',
+          'Ia bisa terbang tinggi di langit untuk mencari makanan seperti ikan atau hewan kecil.',
+          'Ketika tidak terbang, Quetzalcoatlus berjalan dengan keempat kakinya seperti kelelawar raksasa.',
+          'Namanya diambil dari nama dewa berbentuk burung dalam legenda Aztek: “Quetzalcoatl”. Keren, ya! 🦅',
+        ],
+        redirectButton: 'quetzalcoatlus',
+      },
+      {
+        image: require('assets/images/materi/tirex.jpg'),
+        head: 'Tyrannosaurus Rex (T-rex)',
+        body: [
+          'Tyrannosaurus rex, atau biasa disebut T-rex, adalah salah satu dinosaurus paling terkenal di dunia!',
+          'T-rex adalah dinosaurus pemakan daging atau karnivora.',
+          'Tubuhnya besar dan kuat, dengan gigi tajam dan rahang yang bisa menggigit sangat keras.',
+          'T-rex berjalan dengan dua kaki dan punya ekor panjang untuk menjaga keseimbangan.',
+          'Walau tangannya kecil, T-rex adalah pemburu yang hebat di zamannya.',
+          'T-rex hidup jutaan tahun yang lalu di hutan dan padang terbuka.',
+          'Banyak anak-anak menyukai T-rex karena terlihat gagah dan kuat! 🦖',
+        ],
+        redirectButton: 'trex',
+      },
+      {
+        image: require('assets/images/materi/Velociraptor.jpg'),
+        head: 'Velociraptor',
+        body: [
+          'Velociraptor adalah dinosaurus kecil yang sangat cepat dan lincah!',
+          'Nama “Velociraptor” berarti “pencuri yang cepat”, karena ia bisa berlari sangat kencang.',
+          'Velociraptor adalah pemakan daging dan termasuk dinosaurus karnivora.',
+          'Tubuhnya ramping, dengan ekor panjang dan cakar tajam di kakinya.',
+          'Para ilmuwan percaya Velociraptor punya bulu seperti burung.',
+          'Meskipun tidak besar, Velociraptor adalah pemburu yang cerdik dan bekerja sama dalam kelompok.',
+          'Velociraptor sering muncul di film, tapi di dunia nyata ukurannya lebih kecil dari yang digambarkan. 🦕',
+        ],
+        redirectButton: 'velociraptor',
+      },
+    ],
+  },
+} as const;
 
 export default function MateriDetailView({
   route,
@@ -439,26 +534,52 @@ export default function MateriDetailView({
                 {val.body.map((val, idx) => (
                   <Text key={`idx-${idx}`}>{val}</Text>
                 ))}
+                {val?.redirectButton &&
+                  RedirectToARModel({
+                    paramType: val.redirectButton,
+                    navigation,
+                    moreSpace: true
+                  })}
               </View>
             );
           })}
 
-        {/* Tombol Lihat model ar hilangkan dulu */}
         {/* Kalau Device Support AR, maka munculkan tombol lihat model ar */}
-        {false && isSupportAR && (
-          <TouchableHighlight
-            style={styles.touchableButtonStyle}
-            underlayColor={'transparent'}
-            activeOpacity={0.6}
-            onPress={() =>
-              navigation.navigate('Ar', {type: paramType, imageTracking: false})
-            }>
-            <View style={styles.itemButton}>
-              <Text style={styles.itemButtonText}>Lihat Model AR</Text>
-            </View>
-          </TouchableHighlight>
-        )}
+        {paramType !== 'introduction' &&
+          paramType !== 'type' &&
+          isSupportAR &&
+          RedirectToARModel({paramType, navigation, moreSpace: false})}
       </>
     </BackgroundWithSectionLayout>
+  );
+}
+
+function RedirectToARModel({
+  paramType,
+  navigation,
+  moreSpace
+}: {
+  paramType: keyof typeof materi;
+  navigation: NativeStackNavigationProp<ScreenType, 'MateriDetail'>;
+  moreSpace: boolean
+}) {
+  return (
+    <>
+    <TouchableHighlight
+      style={{...styles.touchableButtonStyle, ...(moreSpace ? {marginTop: 20, marginBottom: 30} : {})}}
+      underlayColor={'transparent'}
+      activeOpacity={0.6}
+      onPress={() =>
+        navigation.navigate('Ar', {
+          type: paramType as any,
+          imageTracking: false,
+        })
+      }>
+      <View style={styles.itemButton}>
+        <Text style={styles.itemButtonText}>Lihat Model AR</Text>
+      </View>
+    </TouchableHighlight>
+    {moreSpace && <View style={{width: 'auto', height: 2, backgroundColor: 'black', opacity: 0.1, marginBottom: 50}}></View>}
+    </>
   );
 }

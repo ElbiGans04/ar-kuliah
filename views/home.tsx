@@ -242,12 +242,12 @@ export default function HomeView({
                     onPress={() => {
                       setModal(false);
                       navigation.navigate('Ar', {
-                        type: 'dog',
+                        type: 'chirostenotes',
                         imageTracking: true,
                       });
                     }}>
                     <View style={styles.itemButton}>
-                      <Text style={styles.itemButtonText}>Anjing</Text>
+                      <Text style={styles.itemButtonText}>Chirostenotes</Text>
                     </View>
                   </TouchableHighlight>
                   <TouchableHighlight
@@ -257,12 +257,12 @@ export default function HomeView({
                     onPress={() => {
                       setModal(false);
                       navigation.navigate('Ar', {
-                        type: 'chiken',
+                        type: 'dilophosaurus',
                         imageTracking: true,
                       });
                     }}>
                     <View style={styles.itemButton}>
-                      <Text style={styles.itemButtonText}>Ayam</Text>
+                      <Text style={styles.itemButtonText}>Dilophosaurus</Text>
                     </View>
                   </TouchableHighlight>
                   <TouchableHighlight
@@ -272,12 +272,12 @@ export default function HomeView({
                     onPress={() => {
                       setModal(false);
                       navigation.navigate('Ar', {
-                        type: 'elephant',
-                        imageTracking: true,
+                        type: 'quetzalcoatlus',
+                        imageTracking: false,
                       });
                     }}>
                     <View style={styles.itemButton}>
-                      <Text style={styles.itemButtonText}>Gajah</Text>
+                      <Text style={styles.itemButtonText}>Quetzalcoatlus</Text>
                     </View>
                   </TouchableHighlight>
                   <TouchableHighlight
@@ -287,12 +287,12 @@ export default function HomeView({
                     onPress={() => {
                       setModal(false);
                       navigation.navigate('Ar', {
-                        type: 'kucing',
-                        imageTracking: true,
+                        type: 'trex',
+                        imageTracking: false,
                       });
                     }}>
                     <View style={styles.itemButton}>
-                      <Text style={styles.itemButtonText}>Kucing</Text>
+                      <Text style={styles.itemButtonText}>Trex</Text>
                     </View>
                   </TouchableHighlight>
                   <TouchableHighlight
@@ -302,27 +302,12 @@ export default function HomeView({
                     onPress={() => {
                       setModal(false);
                       navigation.navigate('Ar', {
-                        type: 'kuda',
+                        type: 'velociraptor',
                         imageTracking: true,
                       });
                     }}>
                     <View style={styles.itemButton}>
-                      <Text style={styles.itemButtonText}>Kuda</Text>
-                    </View>
-                  </TouchableHighlight>
-                  <TouchableHighlight
-                    style={styles.touchableButtonStyle}
-                    underlayColor={'transparent'}
-                    activeOpacity={0.6}
-                    onPress={() => {
-                      setModal(false);
-                      navigation.navigate('Ar', {
-                        type: 'rusa',
-                        imageTracking: true,
-                      });
-                    }}>
-                    <View style={styles.itemButton}>
-                      <Text style={styles.itemButtonText}>Rusa</Text>
+                      <Text style={styles.itemButtonText}>Velociraptor</Text>
                     </View>
                   </TouchableHighlight>
                   <TouchableHighlight
