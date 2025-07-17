@@ -1,4 +1,4 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
   Viro3DObject,
   ViroAmbientLight,
@@ -9,9 +9,9 @@ import {
   ViroSpinner,
   ViroSpotLight,
 } from '@reactvision/react-viro';
-import React, {useEffect, useState} from 'react';
-import {Button, StyleSheet, View} from 'react-native';
-import {ScreenType} from 'routes';
+import React, { useState } from 'react';
+import { Button, StyleSheet, View } from 'react-native';
+import { ScreenType } from 'routes';
 
 function get10Percent(value: number): number {
   return (value * 10) / 100;
@@ -22,7 +22,7 @@ const materi = {
     model: require('assets/ar/chirostenotes/13632_Chirostenotes_v1_L2.obj'),
     assets: [
       require('assets/ar/chirostenotes/13632_Chirostenotes_v1_L2-mtl.mtl'),
-      // require('assets/ar/deinonychus/Deinonychus-images.jpg'),
+      require('assets/ar/chirostenotes/Chirostenotes_diffuse.jpg'),
     ],
     initialValue: {
       scale: 0.05,
@@ -35,6 +35,13 @@ const materi = {
     model: require('assets/ar/dilophosaurus/dilophosaurus.obj'),
     assets: [
       require('assets/ar/dilophosaurus/dilophosaurus-mtl.mtl'),
+      require('assets/ar/dilophosaurus/eye.jpg'),
+      require('assets/ar/dilophosaurus/mouth_normals.jpg'),
+      require('assets/ar/dilophosaurus/mouth.jpg'),
+      require('assets/ar/dilophosaurus/nails.jpg'),
+      require('assets/ar/dilophosaurus/skin_normals.jpg'),
+      require('assets/ar/dilophosaurus/skin.jpg'),
+      require('assets/ar/dilophosaurus/teeth.jpg'),
     ],
     initialValue: {
       scale: 0.81,
@@ -60,6 +67,12 @@ const materi = {
     model: require('assets/ar/trex/trex.obj'),
     assets: [
       require('assets/ar/trex/trex-mtl.mtl'),
+      require('assets/ar/trex/ao.jpg'),
+      require('assets/ar/trex/cav.jpg'),
+      require('assets/ar/trex/color.png'),
+      require('assets/ar/trex/dis.png'),
+      require('assets/ar/trex/normal.png'),
+      require('assets/ar/trex/spec.png'),
     ],
     initialValue: {
       scale: 0.11,
@@ -72,6 +85,16 @@ const materi = {
     model: require('assets/ar/velociraptor/toy_dinosaur.obj'),
     assets: [
       require('assets/ar/velociraptor/toy_dinosaur-mtl.mtl'),
+      require('assets/ar/velociraptor/bc.png'),
+      require('assets/ar/velociraptor/dis.png'),
+      require('assets/ar/velociraptor/met.png'),
+      require('assets/ar/velociraptor/nor.png'),
+      require('assets/ar/velociraptor/rou.png'),
+      require('assets/ar/velociraptor/tbc.png'),
+      require('assets/ar/velociraptor/tsbc.png'),
+      require('assets/ar/velociraptor/tsn.png'),
+      require('assets/ar/velociraptor/tsr.png'),
+      require('assets/ar/velociraptor/tst.png'),
     ],
     initialValue: {
       scale: 0.41,
@@ -128,11 +151,11 @@ function Ar(props: any) {
     </>
   );
 
-  useEffect(() => {
-    console.log(
-      `Rotate X : ${rotateX}, Rotate Y : ${rotateY}, Scale: ${scale}`,
-    );
-  }, [rotateX, rotateY, scale]);
+  // useEffect(() => {
+  //   console.log(
+  //     `Rotate X : ${rotateX}, Rotate Y : ${rotateY}, Scale: ${scale}`,
+  //   );
+  // }, [rotateX, rotateY, scale]);
 
   return (
     <ViroARScene>
